@@ -7,10 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerBasedShape
@@ -30,7 +32,10 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.fontResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,6 +44,11 @@ import androidx.core.graphics.toColor
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.font
+import com.sae.loupgarou.R.string
+
+val fontAldrich = FontFamily(
+    Font(font.aldrich_regular, FontWeight.Normal)
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,14 +74,14 @@ fun Credits(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text(text="CRÉDITS",
+        Text(text= stringResource(string.credits),
             modifier = Modifier.padding(10.dp),
             color = Color.White,
-            fontWeight = FontWeight.Bold,
             style = TextStyle(
                 fontSize = 60.sp,
                 shadow = Shadow(color = colorResource(id = color.light_blue), blurRadius = 60f)
-            )
+            ),
+            fontFamily = fontAldrich
         )
         Context()
         Equipe()
@@ -88,22 +98,28 @@ fun Context(){
         .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
         .border(1.dp, color = colorResource(id = color.light_blue))
     ){
-        Text(text="Contexte du Projet",
+        Text(text=stringResource(string.context1),
             color = Color.White,
             modifier = Modifier.padding(5.dp),
-            fontWeight = FontWeight.Bold
+            fontFamily = fontAldrich,
+            style = TextStyle(
+                shadow = Shadow(color = Color.White, blurRadius = 20f)
+            )
         )
-        Text(text="Ce projet a été réalisé dans le cadre de la SAE 2A du BUT informatique.",
+        Text(text=stringResource(string.context2),
             color = colorResource(id = color.light_blue),
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(5.dp),
+            fontFamily = fontAldrich
         )
-        Text(text="Nous somme une équipe de 6 étudiants : 5 en formation initiale et un alternant",
+        Text(text=stringResource(string.context3),
             color = colorResource(id = color.light_blue),
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(5.dp),
+            fontFamily = fontAldrich
         )
-        Text(text="Ce projet est une reconstitution du jeu de société\"les Loups Garous de Thiercelieu\"",
+        Text(text=stringResource(string.context4),
             color = colorResource(id = color.light_blue),
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(5.dp),
+            fontFamily = fontAldrich
         )
     }
 }
@@ -116,29 +132,46 @@ fun Equipe(){
         .clip(CutCornerShape(10.dp))
         .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
         .border(1.dp, color = colorResource(id = color.light_blue))
+        .fillMaxWidth()
 
         ){
-        Text(text="Équipe de Developpement",
+        Text(text=stringResource(string.dev_team),
             color = Color.White,
             modifier = Modifier.padding(5.dp),
-            fontWeight = FontWeight.Bold
+            fontFamily = fontAldrich,
+            style = TextStyle(
+                shadow = Shadow(color = Color.White, blurRadius = 20f)
+            )
         )
-        Text(text = "Anis YOUNES    Cyril BARRALLON    Esteban JACQUES",
+        Text(text = stringResource(string.members1),
             color = colorResource(id = color.light_blue),
             modifier = Modifier.padding(5.dp),
-            fontSize = 13.sp
+            fontFamily = fontAldrich
         )
-        Text(text = "Najib BARBARA  Neil BONNETOT      Robin Werner",
+        Text(text = stringResource(string.members2),
             color = colorResource(id = color.light_blue),
             modifier = Modifier.padding(5.dp),
-            fontSize = 13.sp
+            fontFamily = fontAldrich
+        )
+        Text(text = stringResource(string.members3),
+            color = colorResource(id = color.light_blue),
+            modifier = Modifier.padding(5.dp),
+            fontFamily = fontAldrich
         )
     }
 }
 
 @Composable
 fun Retour(){
-    Button(onClick = { /*TODO*/ }) {
-        Text(text = "Retour à l'acceuil")
+    Row(modifier = Modifier
+        .clip(CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp))
+        .background(color = colorResource(id = color.deep_blue), shape = RectangleShape)
+        .border(1.dp, color = colorResource(id = color.light_blue))
+        ){
+        Text(text = stringResource(string.return_button),
+            fontFamily = fontAldrich,
+            modifier = Modifier.padding(20.dp).clickable(true, onClick = { /*TODO*/ }),
+            color = colorResource(id = color.light_blue)
+        )
     }
 }
