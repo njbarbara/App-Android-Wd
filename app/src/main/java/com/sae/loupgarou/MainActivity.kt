@@ -44,10 +44,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SAELoupGarouTheme {
-                Column(){
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
+                    .clip(CutCornerShape(20.dp))
+                    .border(1.dp, color = colorResource(id = color.light_blue))
+                    .background(color = colorResource(id = color.marine)),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally){
                     Rules()
                     Roles()
                     Deroulement()
+                    Text(text = "Choisissez bien et n'exécutez pas vos concitoyens. Bonne chance !",
+                        color = colorResource(id = color.light_blue),
+                        fontFamily = fontAldrich
+                    )
                 }
             }
         }
@@ -56,15 +67,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Rules(){
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(10.dp)
-        .clip(CutCornerShape(20.dp))
-        .border(1.dp, color = colorResource(id = color.light_blue))
-        .background(color = colorResource(id = color.marine)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    Column(){
         Text(text= stringResource(string.rules),
             modifier = Modifier.padding(10.dp),
             color = Color.White,
@@ -72,6 +75,10 @@ fun Rules(){
                 fontSize = 40.sp,
                 shadow = Shadow(color = colorResource(id = color.light_blue), blurRadius = 60f)
             ),
+            fontFamily = fontAldrich
+        )
+        Text(text="Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit...",
+            color = colorResource(id = color.light_blue),
             fontFamily = fontAldrich
         )
     }
@@ -86,12 +93,33 @@ fun Roles(){
             color = Color.White,
             fontFamily = fontAldrich
         )
-        Text(text = "• Citoyen (Villageois) : ")
-        Text(text = "• Traître (Loup-Garou) : ")
+        Text(text = "• Citoyen (Villageois) : Le jour, participez au débat et votez pour exécuter un joueur suspecté d'être un traître. Votre but est d'éliminer tous les traîtres.",
+            color = colorResource(id = color.light_blue),
+            fontFamily = fontAldrich
+        )
+        Text(text = "• Traître (Loup-Garou) : La nuit, avec vos complices, vous vous réveillez pour assassiner un citoyen. Le jour, vous vous faites passer pour un innocent. Votre but est que les traîtres deviennent plus nombreux que les citoyens.",
+            color = colorResource(id = color.light_blue),
+            fontFamily = fontAldrich
+        )
     }
 }
 
 @Composable
 fun Deroulement(){
-
+    Text(text = "Déroulement : ",
+        color = Color.White,
+        fontFamily = fontAldrich
+    )
+    Text(text = "1. La Nuit : Les traîtres se concertent et choisissent une victime.",
+        color = colorResource(id = color.light_blue),
+        fontFamily = fontAldrich
+    )
+    Text(text = "2. Le Jour : Les citoyens découvrent la victime de la nuit. Un débat s'ouvre, suivi d'un vote pour exécuter un suspect.",
+        color = colorResource(id = color.light_blue),
+        fontFamily = fontAldrich
+    )
+    Text(text = "3. Fin de la partie : La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).",
+        color = colorResource(id = color.light_blue),
+        fontFamily = fontAldrich
+    )
 }
