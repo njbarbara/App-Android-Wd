@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SAE LoupGarou</string>
+    <string name="credits">CRÉDITS</string>
+    <string name="context1">Contexte du Projet</string>
+    <string name="context2">Ce projet a été réalisé dans le cadre de la SAE 2A du BUT informatique.</string>
+    <string name="context3">Nous somme une équipe de 6 étudiants : 5 en formation initiale et un alternant</string>
+    <string name="context4">Ce projet est une reconstitution du jeu de société \"les Loups Garous de Thiercelieu\"</string>
+    <string name="dev_team">Équipe de Developpement</string>
+    <string name="members1">Anis YOUNES, Cyril BARRALLON,</string>
+    <string name="members2">Esteban JACQUES, Najib BARBARA,</string>
+    <string name="members3">Neil BONNETOT, Robin Werner</string>
+    <string name="return_button">RETOUR À L\'ACCEUIL</string>
+    <string name="rules">RÈGLES DU JEU</string>
 </resources>
