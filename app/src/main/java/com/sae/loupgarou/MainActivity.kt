@@ -53,8 +53,6 @@ class MainActivity : ComponentActivity() {
             SAELoupGarouTheme {
                 Column(modifier = Modifier
                     .fillMaxSize()
-                    //.clip(CutCornerShape(20.dp))
-                    //.border(1.dp, color = colorResource(id = color.light_blue))
                     .background(color = colorResource(id = color.marine))
                     .padding(20.dp, 50.dp)
                     .verticalScroll(rememberScrollState()),
@@ -63,12 +61,11 @@ class MainActivity : ComponentActivity() {
                     Rules()
                     Roles()
                     Deroulement()
-                    Text(text = "Choisissez bien et n'exécutez pas vos concitoyens. Bonne chance !\n",
+                    Text(text = stringResource(string.chose_right),
                         color = colorResource(id = color.light_blue),
                         fontFamily = fontAldrich
                     )
                     Retour()
-//                    Text("", Modifier.padding(10.dp))
                 }
             }
         }
@@ -87,7 +84,7 @@ fun Rules(){
             fontFamily = fontAldrich,
 
         )
-        Text(text="Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit...\n",
+        Text(text= stringResource(string.welcome),
             color = colorResource(id = color.light_blue),
             fontFamily = fontAldrich,
             textAlign = TextAlign.Justify,
@@ -102,7 +99,7 @@ fun Roles(){
         modifier = Modifier.padding(10.dp),
         verticalArrangement = Arrangement.Center,
     ){
-        Text(text = "Les Rôles : ",
+        Text(text = stringResource(string.roles ),
             color = Color.White,
             fontFamily = fontAldrich,
             fontSize = 40.sp,
@@ -118,7 +115,7 @@ fun Roles(){
                     )
                 )
                 {
-                    append("• Citoyen (Villageois) : ")
+                    append(stringResource(string.citoyen))
                 }
                 withStyle(
                     style = SpanStyle(
@@ -127,7 +124,7 @@ fun Roles(){
                     )
                 )
                 {
-                    append("Le jour, participez au débat et votez pour exécuter un joueur suspecté d'être un traître. Votre but est d'éliminer tous les traîtres.")
+                    append(stringResource(string.citoyen_explain))
                 }
             },
             textAlign = TextAlign.Justify
@@ -142,7 +139,7 @@ fun Roles(){
                     )
                 )
                 {
-                    append("• Traître (Loup-Garou) : ")
+                    append(stringResource(string.wolf))
                 }
                 withStyle(
                     style = SpanStyle(
@@ -151,7 +148,7 @@ fun Roles(){
                     )
                 )
                 {
-                    append("La nuit, avec vos complices, vous vous réveillez pour assassiner un citoyen. Le jour, vous vous faites passer pour un innocent. Votre but est que les traîtres deviennent plus nombreux que les citoyens.\n")
+                    append(stringResource(string.wolf_explain))
                 }
             },
             textAlign = TextAlign.Justify
@@ -164,7 +161,7 @@ fun Deroulement(){
     Column(
         modifier = Modifier.padding(10.dp)
     ){
-        Text(text = "Déroulement : ",
+        Text(text = stringResource(string.deroulement),
             color = Color.White,
             fontFamily = fontAldrich,
             fontSize = 40.sp,
@@ -180,7 +177,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("1. La Nuit : ")
+                    append(stringResource(string.night))
                 }
                 withStyle(
                     style = SpanStyle(
@@ -189,7 +186,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("Les traîtres se concertent et choisissent une victime.")
+                    append(stringResource(string.night_explain))
                 }
             },
             textAlign = TextAlign.Justify
@@ -204,7 +201,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("2. Le Jour : ")
+                    append(stringResource(string.day))
                 }
                 withStyle(
                     style = SpanStyle(
@@ -213,7 +210,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("Les citoyens découvrent la victime de la nuit. Un débat s'ouvre, suivi d'un vote pour exécuter un suspect.")
+                    append(stringResource(string.day_explain))
                 }
             },
             textAlign = TextAlign.Justify
@@ -228,7 +225,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("3. Fin de la partie : ")
+                    append(stringResource(string.end))
                 }
                 withStyle(
                     style = SpanStyle(
@@ -237,7 +234,7 @@ fun Deroulement(){
                     )
                 )
                 {
-                    append("La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).\n")
+                    append(stringResource(string.end_explain))
                 }
             },
             textAlign = TextAlign.Justify
