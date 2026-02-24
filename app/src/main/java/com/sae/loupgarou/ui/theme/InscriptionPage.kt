@@ -135,7 +135,11 @@ fun InscriptionPage() {
             }
 
             OutlinedButton(
-                onClick = { /* TODO */ },
+                onClick = { email=""
+                            password=""
+                            confirmPassword=""
+                            username=""
+                          },
                 shape = CutCornerShape(10.dp),
                 modifier = Modifier.fillMaxWidth(),
                 border = ButtonDefaults.outlinedButtonBorder.copy(width = 2.dp, brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = R.color.light_blue)))
