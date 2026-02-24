@@ -6,14 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -154,17 +154,21 @@ fun Equipe(){
 
 @Composable
 fun Retour(){
-    Row(modifier = Modifier
-        .clip(CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp))
-        .background(color = colorResource(id = color.deep_blue), shape = RectangleShape)
-        .border(1.dp, color = colorResource(id = color.light_blue))
-        ){
-        Text(text = stringResource(string.return_button),
-            fontFamily = fontAldrich,
-            modifier = Modifier
-                .padding(20.dp)
-                .clickable(true, onClick = { /*TODO*/ }),
-            color = colorResource(id = color.light_blue)
+    OutlinedButton(
+        onClick = { /* TODO */ },
+        shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = colorResource(id = color.deep_blue), shape=CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp)),
+        border = ButtonDefaults.outlinedButtonBorder.copy(
+            width = 2.dp,
+            brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = color.light_blue))
         )
+    ) {
+        Text(stringResource(string.return_button),
+            fontFamily = fontAldrich,
+            color = colorResource(id = color.light_blue),
+            modifier = Modifier.padding(vertical = 10.dp),
+            fontSize = 20.sp)
     }
 }
