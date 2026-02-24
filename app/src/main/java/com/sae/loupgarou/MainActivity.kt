@@ -28,6 +28,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
@@ -56,10 +57,8 @@ class MainActivity : ComponentActivity() {
 fun Credits(){
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(10.dp)
-        .clip(CutCornerShape(20.dp))
-        .border(1.dp, color = colorResource(id = color.light_blue))
-        .background(color = colorResource(id = color.marine)),
+        .background(color = colorResource(id = color.marine))
+        .padding(10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -135,17 +134,20 @@ fun Equipe(){
         Text(text = stringResource(string.members1),
             color = colorResource(id = color.light_blue),
             modifier = Modifier.padding(5.dp),
-            fontFamily = fontAldrich
+            fontFamily = fontAldrich,
+            textAlign = TextAlign.Justify
         )
         Text(text = stringResource(string.members2),
             color = colorResource(id = color.light_blue),
             modifier = Modifier.padding(5.dp),
-            fontFamily = fontAldrich
+            fontFamily = fontAldrich,
+            textAlign = TextAlign.Justify
         )
         Text(text = stringResource(string.members3),
             color = colorResource(id = color.light_blue),
             modifier = Modifier.padding(5.dp),
-            fontFamily = fontAldrich
+            fontFamily = fontAldrich,
+            textAlign = TextAlign.End
         )
     }
 }
