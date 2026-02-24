@@ -13,9 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -26,117 +26,170 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation.Companion.None
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.sae.loupgarou.R.color
-import com.sae.loupgarou.R.string
-import com.sae.loupgarou.R.font
+import androidx.compose.ui.unit.sp
+import com.sae.loupgarou.R
 
 val fontAldrich = FontFamily(
-    Font(font.aldrich_regular, FontWeight.Normal)
+    Font(R.font.aldrich_regular, FontWeight.Normal)
 )
 
-
 @Composable
-fun InscriptionPage(){
+fun InscriptionPage() {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
 
     val isEmailError = email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    val isPassWordError = password.isNotEmpty() && password.length < 6
+    val isPasswordError = password.isNotEmpty() && password.length < 6
+    val doPasswordsMatch = confirmPassword.isNotEmpty() && password != confirmPassword
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorResource(color.deep_marine)),
+            .background(color = colorResource(R.color.deep_marine)),
         contentAlignment = Alignment.Center
-    ){
-        Column( modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 45.dp),
-            verticalArrangement = Arrangement.spacedBy(25.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
-
-            OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text("Nom") },
-                singleLine = true,
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(4.dp, RoundedCornerShape(8.dp)),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = colorResource(color.white),
-                    unfocusedContainerColor = colorResource(color.white)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+                .border(
+                    width = 2.dp,
+                    color = colorResource(id = R.color.light_blue),
+                    shape = CutCornerShape(10.dp)
                 )
+                .padding(horizontal = 25.dp, vertical = 40.dp),
+            verticalArrangement = Arrangement.spacedBy(15.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "INSCRIPTION",
+                fontFamily = fontAldrich,
+                color = Color.White,
+                fontSize = 30.sp,
+                modifier = Modifier.padding(bottom = 20.dp)
             )
-            OutlinedTextField(
+
+
+            AuthTextField(
+                label = "EMAIL",
                 value = email,
                 onValueChange = { email = it },
-                label = { Text("Email") },
-                singleLine = true,
                 isError = isEmailError,
-
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                supportingText = {
-                    if (isEmailError) {
-                        Text("il faut un email valide")
-                    }
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = colorResource(color.white),
-                    unfocusedContainerColor = colorResource(color.white),
-                    errorContainerColor = colorResource(color.white)
-                )
+                errorMessage = "Adresse e-mail invalide."
             )
 
-            OutlinedTextField(
+
+            AuthTextField(
+                label = "NOM D'UTILISATEUR",
+                value = username,
+                onValueChange = { username = it }
+            )
+
+
+            AuthTextField(
+                label = "MOT DE PASSE",
                 value = password,
                 onValueChange = { password = it },
-                label = { Text("Mot de passe") },
-                singleLine = true,
-                isError = isPassWordError,
-                visualTransformation = PasswordVisualTransformation(),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                supportingText = {
-                    if (isPassWordError) {
-                        Text("il faut au moins 6 caractères")
-                    }
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = colorResource(color.white),
-                    unfocusedContainerColor = colorResource(color.white),
-                    errorContainerColor = colorResource(color.white)
-                )
+                isError = isPasswordError,
+                errorMessage = "Il faut au moins 6 caractères.",
+                isPassword = true
             )
 
-            Row(modifier = Modifier
-                .clip(CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp))
-                .background(color = colorResource(id = color.deep_blue), shape = RectangleShape)
-                .border(1.dp, color = colorResource(id = color.light_blue))
-                .fillMaxWidth()
-            ){
-                Text(text = "S'inscrire",
-                    fontFamily = fontAldrich,
-                    modifier = Modifier.padding(20.dp).clickable(true, onClick = { /*TODO*/ }),
-                    color = colorResource(id = color.light_blue)
-                )
+
+            AuthTextField(
+                label = "CONFIRMER LE MOT DE PASSE",
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it },
+                isError = doPasswordsMatch,
+                errorMessage = "Les mots de passe ne correspondent pas.",
+                isPassword = true
+            )
+
+
+            Button(
+                onClick = { /* TODO */ },
+                shape = CutCornerShape(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.light_blue))
+            ) {
+                Text("S'INSCRIRE", fontFamily = fontAldrich, color = colorResource(id = R.color.deep_blue), modifier = Modifier.padding(vertical = 10.dp))
             }
 
+            OutlinedButton(
+                onClick = { /* TODO */ },
+                shape = CutCornerShape(10.dp),
+                modifier = Modifier.fillMaxWidth(),
+                border = ButtonDefaults.outlinedButtonBorder.copy(width = 2.dp, brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = R.color.light_blue)))
+            ) {
+                Text("RÉINITIALISER", fontFamily = fontAldrich, color = colorResource(id = R.color.light_blue), modifier = Modifier.padding(vertical = 10.dp))
+            }
+
+            Row(modifier = Modifier.padding(top = 20.dp)) {
+                Text("Déjà inscrit ? ", color = Color.White, fontFamily = fontAldrich)
+                Text(
+                    text = "Se connecter",
+                    color = colorResource(id = R.color.light_blue),
+                    fontFamily = fontAldrich,
+                    modifier = Modifier.clickable { /* TODO */ }
+                )
+            }
         }
+    }
+}
+
+@Composable
+private fun AuthTextField(
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    isError: Boolean = false,
+    errorMessage: String = "",
+    isPassword: Boolean = false
+) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = label,
+            color = colorResource(id = R.color.light_blue),
+            fontFamily = fontAldrich,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            shape = CutCornerShape(8.dp),
+            isError = isError,
+            visualTransformation = if (isPassword) PasswordVisualTransformation() else None,
+            supportingText = {
+                if (isError) {
+                    Text(errorMessage, color = Color.Red, fontFamily = fontAldrich)
+                }
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = colorResource(id = R.color.deep_blue),
+                unfocusedContainerColor = colorResource(id = R.color.deep_blue),
+                errorContainerColor = colorResource(id = R.color.deep_blue),
+                focusedBorderColor = colorResource(id = R.color.light_blue),
+                unfocusedBorderColor = colorResource(id = R.color.light_blue),
+                cursorColor = colorResource(id = R.color.light_blue),
+                focusedTextColor = colorResource(id = R.color.light_blue),
+                unfocusedTextColor = colorResource(id = R.color.light_blue),
+                errorTextColor = colorResource(id = R.color.light_blue)
+            )
+        )
     }
 }
