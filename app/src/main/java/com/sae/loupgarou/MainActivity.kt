@@ -11,6 +11,8 @@ import androidx.compose.ui.text.font.FontWeight
 import com.sae.loupgarou.R.font
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.creation.Creation
+import com.sae.loupgarou.pages.credits.Credits
+import com.sae.loupgarou.pages.rules.RulePage
 
 val fontAldrich = FontFamily(
     Font(font.aldrich_regular, FontWeight.Normal)
