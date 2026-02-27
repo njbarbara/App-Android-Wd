@@ -5,9 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.sae.loupgarou.R.font
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
-import com.sae.loupgarou.pages.credits.Credits
-import com.sae.loupgarou.pages.rules.RulePage
+import com.sae.loupgarou.pages.creation.Creation
+
+val fontAldrich = FontFamily(
+    Font(font.aldrich_regular, FontWeight.Normal)
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +22,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SAELoupGarouTheme {
-                Credits()
+                //Credits()
                 //RulePage()
+                Creation()
             }
         }
     }

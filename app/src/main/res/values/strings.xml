@@ -13,7 +13,7 @@
 
     <string name="rules">RÈGLES DU JEU</string>
     <string name="chose_right">Choisissez bien et n\'exécutez pas vos concitoyens. Bonne chance !\n</string>
-    <string name="welcome">Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit...\n</string>
+    <string name="welcome">Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit…\n</string>
     <string name="roles">Les Rôles : </string>
     <string name="citoyen">• Citoyen (Villageois) :\ </string>
     <string name="citoyen_explain">Le jour, participez au débat et votez pour exécuter un joueur suspecté d\'être un traître. Votre but est d\'éliminer tous les traîtres.</string>
@@ -26,4 +26,5 @@
     <string name="day_explain">Les citoyens découvrent la victime de la nuit. Un débat s\'ouvre, suivi d\'un vote pour exécuter un suspect.</string>
     <string name="end">3. Fin de la partie :\ </string>
     <string name="end_explain">La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).\n</string>
+    <string name="new_game">"NOUVELLE PARTIE"</string>
 </resources>
