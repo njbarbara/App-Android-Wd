@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">SAE LoupGarou</string>
+    <string name="return_button">RETOUR À L\'ACCEUIL</string>
+    <string name="inscription">INSCRIPTION</string>
+    <string name="email_label">EMAIL</string>
+    <string name="email_invalid">Adresse e-mail invalide.</string>
+    <string name="username_label">NOM D\'UTILISATEUR</string>
+    <string name="password_label">MOT DE PASSE</string>
+    <string name="password_too_short">Il faut au moins 6 caractères.</string>
+    <string name="confirm_password_label">CONFIRMER LE MOT DE PASSE</string>
+    <string name="passwords_dont_match">Les mots de passe ne correspondent pas.</string>
+    <string name="btn_register">S\'INSCRIRE</string>
+    <string name="btn_reset">RÉINITIALISER</string>
+    <string name="already_registered">Déjà inscrit ? </string>
+    <string name="login_link">Se connecter</string>
     <string name="credits">CRÉDITS</string>
     <string name="context1">Contexte du Projet</string>
     <string name="context2">Ce projet a été réalisé dans le cadre de la SAE 2A du BUT informatique.</string>
@@ -9,7 +22,7 @@
     <string name="members1">Anis YOUNES, Cyril BARRALLON,</string>
     <string name="members2">Esteban JACQUES, Najib BARBARA,</string>
     <string name="members3">Neil BONNETOT, Robin Werner</string>
-    <string name="return_button">RETOUR À L\'ACCEUIL</string>
+
 
     <string name="rules">RÈGLES DU JEU</string>
     <string name="chose_right">Choisissez bien et n\'exécutez pas vos concitoyens. Bonne chance !\n</string>
