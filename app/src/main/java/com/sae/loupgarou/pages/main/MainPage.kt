@@ -1,50 +1,38 @@
-package com.sae.loupgarou.ui.theme
+package com.sae.loupgarou.pages.main
 
 
-import android.util.Patterns
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation.Companion.None
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
-import androidx.compose.foundation.Image
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.graphics.graphicsLayer
+
 
 val fontAldrich = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
@@ -87,7 +75,7 @@ fun MainPage() {
         ) {
 
             Text(
-                text = "WOLVES OF\nDEMOCRACY",
+                text = stringResource(id = R.string.main_title),
                 fontFamily = fontAldrich,
                 fontSize = 32.sp,
                 color = Color.White,
@@ -96,7 +84,7 @@ fun MainPage() {
             )
 
             Text(
-                text = "Choisissez votre destinée",
+                text = stringResource(id = R.string.main_subtitle),
                 fontFamily = fontAldrich,
                 fontSize = 14.sp,
                 color = colorResource(R.color.light_blue),
@@ -114,7 +102,7 @@ fun MainPage() {
                 )
             ) {
                 Text(
-                    text = "SE CONNECTER",
+                    text = stringResource(id = R.string.btn_login),
                     fontFamily = fontAldrich,
                     fontSize = 18.sp,
                     color = colorResource(R.color.deep_blue),
@@ -123,7 +111,7 @@ fun MainPage() {
             }
 
             Text(
-                text = "OU",
+                text = stringResource(id = R.string.or),
                 fontFamily = fontAldrich,
                 fontSize = 16.sp,
                 color = Color.White
@@ -134,11 +122,11 @@ fun MainPage() {
                 shape = CutCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.deep_blue)),
                 modifier = Modifier.fillMaxWidth(),
-                border = ButtonDefaults.outlinedButtonBorder.copy(width = 2.dp, brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = R.color.light_blue)))
+                border = ButtonDefaults.outlinedButtonBorder.copy(width = 2.dp, brush = SolidColor(colorResource(id = R.color.light_blue)))
             )
             {
                 Text(
-                    text = "S'INSCRIRE",
+                    text = stringResource(id = R.string.btn_register),
                     fontFamily = fontAldrich,
                     fontSize = 18.sp,
                     color = colorResource(R.color.light_blue),
@@ -148,5 +136,3 @@ fun MainPage() {
         }
     }
 }
-
-
