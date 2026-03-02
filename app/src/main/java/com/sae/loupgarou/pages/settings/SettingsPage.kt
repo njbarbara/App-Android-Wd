@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -40,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.pages.credits.fontAldrich
+import com.sae.loupgarou.pages.settings.VolumeSlider
 
 val fontAldrichSettings = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
@@ -84,7 +86,7 @@ fun SettingsPage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            Text(text= "PARAMÈTRES",
+            Text(text= stringResource(R.string.settings),
                 modifier = Modifier.padding(10.dp),
                 color = Color.White,
                 style = TextStyle(
@@ -109,7 +111,7 @@ fun SettingsPage() {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        "MODE CLAIR/SOMBRE",
+                        text = stringResource(R.string.mode_clair_sombre),
                         color = colorResource(R.color.light_blue),
                         fontFamily = fontAldrichSettings,
                         fontSize = 12.sp
@@ -137,7 +139,7 @@ fun SettingsPage() {
                     )
                 }
 
-                // EN button
+
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -159,39 +161,13 @@ fun SettingsPage() {
                 }
             }
 
-            // Sliders
             Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                VolumeSlider(label = "Volume Général", value = generalVolume, onValueChange = { generalVolume = it })
-                VolumeSlider(label = "Volume Sons", value = soundVolume, onValueChange = { soundVolume = it })
-                VolumeSlider(label = "Volume Musique", value = musicVolume, onValueChange = { musicVolume = it })
+                VolumeSlider(label = stringResource(R.string.volume_general), value = generalVolume, onValueChange = { generalVolume = it })
+                VolumeSlider(label = stringResource(R.string.volume_sons), value = soundVolume, onValueChange = { soundVolume = it })
+                VolumeSlider(label = stringResource(R.string.volume_musique), value = musicVolume, onValueChange = { musicVolume = it })
             }
         }
     }
 }
 
-@Composable
-fun VolumeSlider(label: String, value: Float, onValueChange: (Float) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = label,
-            color = colorResource(R.color.light_blue),
-            fontFamily = fontAldrichSettings,
-            fontSize = 14.sp,
-            modifier = Modifier.weight(1f),
-            textAlign = TextAlign.End
-        )
-        Slider(
-            value = value,
-            onValueChange = onValueChange,
-            modifier = Modifier.weight(2f).padding(horizontal = 10.dp),
-            colors = SliderDefaults.colors(
-                thumbColor = colorResource(R.color.white),
-                activeTrackColor = colorResource(R.color.light_blue),
-                inactiveTrackColor = colorResource(R.color.light_blue).copy(alpha = 0.3f)
-            )
-        )
-    }
-}
+
