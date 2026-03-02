@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.credits.CreditsPage
 import com.sae.loupgarou.pages.rules.RulePage
+import com.sae.loupgarou.ui.theme.SettingsPage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SAELoupGarouTheme {
                 CreditsPage()
+                //SettingsPage()
                 //RulePage()
             }
         }

@@ -26,4 +26,9 @@
     <string name="day_explain">Les citoyens découvrent la victime de la nuit. Un débat s\'ouvre, suivi d\'un vote pour exécuter un suspect.</string>
     <string name="end">3. Fin de la partie :\ </string>
     <string name="end_explain">La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).\n</string>
+    <string name="settings">PARAMETRES</string>
+    <string name="volume_general">Volume Général</string>
+    <string name="volume_sons">Volume Sons</string>
+    <string name="volume_musique">Volume Musique</string>
+    <string name="mode_clair_sombre">MODE CLAIR/SOMBRE</string>
 </resources>
