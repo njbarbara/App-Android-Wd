@@ -21,10 +21,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SAELoupGarouTheme {
-                CreditsPage()
+                //CreditsPage()
                 //SettingsPage()
                 //RulePage()
-                //InscritionPage()
+                //InscriptionPage()
             }
         }
     }
