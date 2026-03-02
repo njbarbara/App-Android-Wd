@@ -1,5 +1,6 @@
 package com.sae.loupgarou
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,29 +11,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
+import com.sae.loupgarou.pages.credits.CreditsPage
+import com.sae.loupgarou.pages.rules.RulePage
+import com.sae.loupgarou.ui.theme.SettingsPage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InscriptionPage()
+            SAELoupGarouTheme {
+                CreditsPage()
+                //SettingsPage()
+                //RulePage()
+                //InscritionPage()
+            }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SAELoupGarouTheme {
-        Greeting("Android")
-    }
-}
