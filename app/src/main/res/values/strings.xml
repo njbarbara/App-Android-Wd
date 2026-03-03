@@ -44,4 +44,9 @@
     <string name="volume_sons">Volume Sons</string>
     <string name="volume_musique">Volume Musique</string>
     <string name="mode_clair_sombre">MODE CLAIR/SOMBRE</string>
+
+    <string name="main_title">WOLVES OF\nDEMOCRACY</string>
+    <string name="main_subtitle">Choisissez votre destinée</string>
+    <string name="btn_login">SE CONNECTER</string>
+    <string name="or">OU</string>
 </resources>
