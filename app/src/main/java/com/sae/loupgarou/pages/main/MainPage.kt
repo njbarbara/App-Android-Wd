@@ -20,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -77,11 +79,18 @@ fun MainPage() {
             Text(
                 text = stringResource(id = R.string.main_title),
                 fontFamily = fontAldrich,
-                fontSize = 32.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                lineHeight = 36.sp
-            )
+                lineHeight = 36.sp,
+                style = TextStyle(
+                    fontSize = 40.sp,
+                    shadow = Shadow(
+                        color = colorResource(id = R.color.light_blue),
+                        blurRadius = 60f
+                    )
+                ),
+
+                )
 
             Text(
                 text = stringResource(id = R.string.main_subtitle),
