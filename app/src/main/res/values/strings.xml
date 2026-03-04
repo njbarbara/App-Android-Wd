@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">SAE LoupGarou</string>
-    <string name="return_button">RETOUR À L\'ACCEUIL</string>
+    <string name="app_name">Loup Garou</string>
+    <string name="login_title">IDENTIFICATION</string>
+    <string name="login_subtitle">Accès au réseau sécurisé</string>
+    <string name="login_email_label">Adresse Email</string>
+    <string name="login_password_label">Mot de passe</string>
+    <string name="login_button_text">SE CONNECTER</string>
+    <string name="login_background_description">Fond d’écran</string>
 </resources>
