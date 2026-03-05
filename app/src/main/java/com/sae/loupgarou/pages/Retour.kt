@@ -24,7 +24,7 @@ fun Retour(){
         shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = colorResource(id = color.deep_blue), shape=CutCornerShape(topStart = 10.dp, bottomEnd = 10.dp)),
+            .background(color = colorResource(id = color.deep_blue), shape=CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp)),
         border = ButtonDefaults.outlinedButtonBorder.copy(
             width = 2.dp,
             brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = color.light_blue))
