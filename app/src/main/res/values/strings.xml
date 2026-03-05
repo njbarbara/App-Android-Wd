@@ -48,5 +48,12 @@
     <string name="main_title">WOLVES OF\nDEMOCRACY</string>
     <string name="main_subtitle">Choisissez votre destinée</string>
     <string name="btn_login">SE CONNECTER</string>
+
+    <string name="login_title">IDENTIFICATION</string>
+    <string name="login_subtitle">Accès au réseau sécurisé</string>
+    <string name="login_email_label">Adresse Email</string>
+    <string name="login_password_label">Mot de passe</string>
+    <string name="login_button_text">SE CONNECTER</string>
+    <string name="login_background_description">Fond d’écran</string>
     <string name="or">OU</string>
 </resources>
