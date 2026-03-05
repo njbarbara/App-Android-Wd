@@ -22,7 +22,7 @@
     <string name="members1">Anis YOUNES, Cyril BARRALLON,</string>
     <string name="members2">Esteban JACQUES, Najib BARBARA,</string>
     <string name="members3">Neil BONNETOT, Robin Werner</string>
-
+    <string name="pseudo">Pseudo </string>
 
     <string name="rules">RÈGLES DU JEU</string>
     <string name="chose_right">Choisissez bien et n\'exécutez pas vos concitoyens. Bonne chance !\n</string>

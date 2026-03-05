@@ -1,4 +1,4 @@
-package com.sae.loupgarou.pages.connection
+package com.sae.loupgarou.pages.authentification.connection
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -28,27 +29,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource // Nouvel import
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel // Import manquant
 
 import com.sae.loupgarou.R
+import com.sae.loupgarou.viewmodels.LoginViewModel
 
 
 val AldrichFont = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
 )
 
-
 @Composable
-fun ConnectionPage() {
-    var email by remember { mutableStateOf("") }
+fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du paramètre ici
+    var pseudo by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
+   
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -63,8 +66,15 @@ fun ConnectionPage() {
         Box(
             modifier = Modifier
                 .padding(24.dp)
-                .border(2.dp, colorResource(R.color.light_blue), CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp))
-                .background(colorResource(R.color.deep_marine).copy(alpha = 0.9f), CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp))
+                .border(
+                    2.dp,
+                    colorResource(R.color.light_blue),
+                    CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp)
+                )
+                .background(
+                    colorResource(R.color.deep_marine).copy(alpha = 0.9f),
+                    CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp)
+                )
                 .padding(32.dp)
         ) {
             Column(
@@ -89,10 +99,10 @@ fun ConnectionPage() {
                 )
 
                 OutlinedTextField(
-                    value = email,
-                    onValueChange = { email = it },
-                    label = { Text(stringResource(R.string.login_email_label), color = colorResource(R.color.light_blue)) },
-                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White, fontFamily = AldrichFont),
+                    value = pseudo,
+                    onValueChange = { pseudo = it },
+                    label = { Text(stringResource(R.string.pseudo), color = colorResource(R.color.light_blue)) },
+                    textStyle = TextStyle(color = Color.White, fontFamily = AldrichFont),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = colorResource(R.color.light_blue),
                         unfocusedBorderColor = colorResource(R.color.light_blue).copy(alpha = 0.5f),
@@ -106,7 +116,7 @@ fun ConnectionPage() {
                     onValueChange = { password = it },
                     label = { Text(stringResource(R.string.login_password_label), color = colorResource(R.color.light_blue)) },
                     visualTransformation = PasswordVisualTransformation(),
-                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White, fontFamily = AldrichFont),
+                    textStyle = TextStyle(color = Color.White, fontFamily = AldrichFont),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = colorResource(R.color.light_blue),
                         unfocusedBorderColor = colorResource(R.color.light_blue).copy(alpha = 0.5f),
@@ -118,20 +128,28 @@ fun ConnectionPage() {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { /* Action de connexion ici */ },
+                    onClick = { viewModel.login(pseudo, password) },
+                    enabled = !viewModel.isLoading,
                     shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.light_blue)),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp)
                 ) {
-                    Text(
-                        text = stringResource(R.string.login_button_text),
-                        fontFamily = AldrichFont,
-                        color = colorResource(R.color.deep_blue),
-                        fontSize = 18.sp,
-                        letterSpacing = 1.sp
-                    )
+                    if (viewModel.isLoading) {
+                        CircularProgressIndicator(color = Color.White)
+                    } else {
+                        Text(
+                            text = stringResource(R.string.login_button_text),
+                            fontFamily = AldrichFont,
+                            color = colorResource(R.color.deep_blue),
+                            fontSize = 18.sp,
+                            letterSpacing = 1.sp
+                        )
+                    }
+                }
+                viewModel.loginResult?.let { result ->
+                    Text(text = result, color = Color.Red)
                 }
             }
         }

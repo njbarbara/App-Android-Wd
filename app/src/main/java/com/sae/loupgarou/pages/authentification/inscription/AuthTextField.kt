@@ -1,4 +1,4 @@
-package com.sae.loupgarou.pages.inscription
+package com.sae.loupgarou.pages.authentification.inscription
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
