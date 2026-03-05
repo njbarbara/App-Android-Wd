@@ -32,7 +32,7 @@ import com.sae.loupgarou.pages.Retour
 
 
 @Composable
-fun Creation(){
+fun CreationPage(){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(id = color.marine))
@@ -50,47 +50,8 @@ fun Creation(){
             fontFamily = fontAldrich
         )
         NbPlayers()
+        Duree()
         CreateButton()
         Retour()
-    }
-}
-
-@Composable
-fun NbPlayers(){
-    var sliderPosition by remember { mutableFloatStateOf(3f) }
-    Column {
-        Slider(
-            value = sliderPosition,
-            onValueChange = { sliderPosition = it },
-            steps=12,
-            valueRange = 3f..16f
-        )
-        Text(text = sliderPosition.toString())
-    }
-}
-
-
-@Composable
-fun CreateButton(){
-    OutlinedButton(
-        onClick = { /* TODO */ },
-        shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom=20.dp)
-            .background(
-                color = colorResource(id = color.deep_blue),
-                shape=CutCornerShape(topStart=10.dp, bottomEnd = 10.dp)
-            ),
-        border = ButtonDefaults.outlinedButtonBorder.copy(
-            width = 2.dp,
-            brush = androidx.compose.ui.graphics.SolidColor(colorResource(id = color.light_blue))
-        )
-    ) {
-        Text(stringResource(string.create_game),
-            fontFamily = fontAldrich,
-            color = colorResource(id = color.light_blue),
-            modifier = Modifier.padding(vertical = 10.dp),
-            fontSize = 20.sp)
     }
 }

@@ -10,7 +10,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.sae.loupgarou.R.font
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
-import com.sae.loupgarou.pages.creation.Creation
+import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.Credits
 import com.sae.loupgarou.pages.rules.RulePage
 
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
             SAELoupGarouTheme {
                 //Credits()
                 //RulePage()
-                Creation()
+                CreationPage()
             }
         }
     }

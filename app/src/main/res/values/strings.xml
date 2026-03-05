@@ -28,4 +28,7 @@
     <string name="end_explain">La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).\n</string>
     <string name="new_game">"NOUVELLE PARTIE"</string>
     <string name="create_game">"CRÉER LA PARTIE"</string>
+    <string name="nb_players">"Nombre de joueurs maximum : "</string>
+    <string name="duree">"Durée d'une phase : "</string>
+
 </resources>
