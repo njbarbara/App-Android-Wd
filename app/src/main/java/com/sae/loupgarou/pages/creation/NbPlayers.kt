@@ -18,7 +18,7 @@ import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun NbPlayers(){
-    var sliderPosition by remember { mutableFloatStateOf(3f) }
+    var sliderPosition by remember { mutableFloatStateOf(4f) }
     Column {
         Text(
             text = stringResource(string.nb_players),
@@ -30,8 +30,8 @@ fun NbPlayers(){
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
-            steps=12,
-            valueRange = 3f..16f,
+            steps=11,
+            valueRange = 4f..16f,
             colors = SliderDefaults.colors(
                 thumbColor = colorResource(id = R.color.light_blue),
                 activeTrackColor = colorResource(id = R.color.light_blue),

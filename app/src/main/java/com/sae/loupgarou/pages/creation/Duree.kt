@@ -35,7 +35,9 @@ fun Duree(){
             colors = SliderDefaults.colors(
                 thumbColor = colorResource(id = R.color.light_blue),
                 activeTrackColor = colorResource(id = R.color.light_blue),
-                inactiveTrackColor = colorResource(id = R.color.deep_marine)
+                inactiveTrackColor = colorResource(id = R.color.deep_marine),
+                activeTickColor = colorResource(id = R.color.light_blue),
+                inactiveTickColor = colorResource(id = R.color.marine)
             )
         )
         Text(
