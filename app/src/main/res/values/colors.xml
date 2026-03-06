@@ -11,5 +11,9 @@
     <color name="deep_marine">#FF0A3042</color>
     <color name="light_blue">#FF4CD7EA</color>
     <color name="deep_blue"> #FF0F172A</color>
+
+    <!-- Wolf colors-->
     <color name="red"> #FFFF0000</color>
+    <color name="light_red"> #C21807</color>
+    <color name="light_red2">#D91B07</color>
 </resources>

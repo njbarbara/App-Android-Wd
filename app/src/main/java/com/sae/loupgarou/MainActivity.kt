@@ -11,9 +11,11 @@ import com.sae.loupgarou.R.font
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.main.MainNavHost
 
+
 val fontAldrich = FontFamily(
     Font(font.aldrich_regular, FontWeight.Normal)
 )
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
