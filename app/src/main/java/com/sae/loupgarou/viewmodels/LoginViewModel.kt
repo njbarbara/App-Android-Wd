@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sae.loupgarou.data.SessionManager
 import com.sae.loupgarou.models.LoginRequest
+import com.sae.loupgarou.models.RegisterRequest
 import com.sae.loupgarou.services.AuthApiService
 import com.sae.loupgarou.services.RetrofitClient
 import kotlinx.coroutines.launch
@@ -21,13 +22,15 @@ class LoginViewModel @JvmOverloads constructor(
     
     var isLoading by mutableStateOf(false)
     var loginResult by mutableStateOf<String?>(null)
+    var registerResult by mutableStateOf<String?>(null)
 
-    fun login(email: String, mdp: String) {
+
+    fun login(login: String, password: String) {
         viewModelScope.launch {
             isLoading = true
             loginResult = null
             try {
-                val response = apiService.login(LoginRequest(email, mdp))
+                val response = apiService.login(LoginRequest(login, password))
                 if (response.isSuccessful) {
                     val body = response.body()
                     val token = body?.token
@@ -38,7 +41,9 @@ class LoginViewModel @JvmOverloads constructor(
                         loginResult = "Erreur : Token non reçu"
                     }
                 } else {
-                    loginResult = "Erreur : ${response.code()} - Identifiants incorrects"
+                    val errorBody = response.errorBody()?.string()
+                    var errorMessage = "Identifiants incorrects" // Message par défaut
+                    loginResult = "Erreur : ${errorBody ?: errorMessage} - Identifiants incorrects"
                 }
             } catch (e: Exception) {
                 loginResult = "Erreur réseau : ${e.localizedMessage}"
@@ -47,4 +52,29 @@ class LoginViewModel @JvmOverloads constructor(
             }
         }
     }
+
+    fun register(login: String, email: String, password: String) {
+        viewModelScope.launch {
+            isLoading = true
+            registerResult = null
+            try{
+                val response = apiService.register(RegisterRequest(login, email, password))
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    val token = body?.token
+                    if (token != null) {
+                        sessionManager.saveToken(token)
+                        registerResult = "Succès : Inscription réussie"
+                    } else {
+                        registerResult = "Erreur : Token non reçu"
+                    }
+                }
+            }catch(e: Exception){
+                registerResult = "Erreur réseau : ${e.localizedMessage}"
+            } finally {
+                isLoading = false
+            }
+        }
+    }
 }
+

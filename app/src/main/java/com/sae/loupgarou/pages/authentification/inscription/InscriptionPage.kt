@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,14 +40,17 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sae.loupgarou.R
+import com.sae.loupgarou.viewmodels.LoginViewModel
+import com.sae.loupgarou.viewmodels.RegisterViewModel
 
 val fontAldrich = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
 )
 
 @Composable
-fun InscriptionPage() {
+fun InscriptionPage(viewModel: RegisterViewModel = viewModel()) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -138,19 +142,27 @@ fun InscriptionPage() {
 
 
             Button(
-                onClick = { /* TODO */ },
+                onClick = { viewModel.register(username, email, password) },
+                enabled = !viewModel.isLoading,
                 shape = CutCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.light_blue))
             ) {
-                Text(
-                    text = stringResource(id = R.string.btn_register),
-                    fontFamily = fontAldrich,
-                    color = colorResource(id = R.color.deep_blue),
-                    modifier = Modifier.padding(vertical = 10.dp)
-                )
+                if (viewModel.isLoading) {
+                    CircularProgressIndicator(color = Color.White)
+                } else {
+                    Text(
+                        text = stringResource(id = R.string.btn_register),
+                        fontFamily = fontAldrich,
+                        color = colorResource(id = R.color.deep_blue),
+                        modifier = Modifier.padding(vertical = 10.dp)
+                    )
+                }
+            }
+            viewModel.registerResult?.let { result ->
+                Text(text = result, color = Color.Red)
             }
 
             OutlinedButton(

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.sae.loupgarou.pages.authentification.connection.ConnectionPage
+import com.sae.loupgarou.pages.authentification.inscription.InscriptionPage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,8 +18,8 @@ class MainActivity : ComponentActivity() {
                 //CreditsPage()
                 //SettingsPage()
                 //RulePage()
-                //InscriptionPage()
-                ConnectionPage()
+                InscriptionPage()
+                //ConnectionPage()
             }
         }
     }
