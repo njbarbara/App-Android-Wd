@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.string
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun Deroulement(){

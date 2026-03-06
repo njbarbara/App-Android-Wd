@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
-import com.sae.loupgarou.ui.theme.fontAldrichSettings
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun VolumeSlider(label: String, value: Float, onValueChange: (Float) -> Unit) {
@@ -25,7 +25,7 @@ fun VolumeSlider(label: String, value: Float, onValueChange: (Float) -> Unit) {
         Text(
             text = label,
             color = colorResource(R.color.light_blue),
-            fontFamily = fontAldrichSettings,
+            fontFamily = fontAldrich,
             fontSize = 14.sp,
             modifier = Modifier.weight(1f),
             textAlign = TextAlign.End

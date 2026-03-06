@@ -15,6 +15,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation.Companion.None
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun AuthTextField(

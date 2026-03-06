@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.material3.Slider
-import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,20 +30,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
-import com.sae.loupgarou.pages.credits.fontAldrich
 import com.sae.loupgarou.pages.settings.VolumeSlider
-
-val fontAldrichSettings = FontFamily(
-    Font(R.font.aldrich_regular, FontWeight.Normal)
-)
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun SettingsPage() {
@@ -75,11 +66,11 @@ fun SettingsPage() {
                 .padding(horizontal = 24.dp)
                 .border(
                     width = 2.dp,
-                    color = colorResource(R.color.light_blue),
+                    color = colorResource(color.light_blue),
                     shape = CutCornerShape(20.dp)
                 )
                 .background(
-                    color = colorResource(R.color.deep_marine),
+                    color = colorResource(color.deep_marine),
                     shape = CutCornerShape(20.dp)
                 )
                 .padding(vertical = 40.dp, horizontal = 25.dp),
@@ -112,8 +103,8 @@ fun SettingsPage() {
                 ) {
                     Text(
                         text = stringResource(R.string.mode_clair_sombre),
-                        color = colorResource(R.color.light_blue),
-                        fontFamily = fontAldrichSettings,
+                        color = colorResource(color.light_blue),
+                        fontFamily = fontAldrich,
                         fontSize = 12.sp
                     )
                 }
@@ -122,9 +113,9 @@ fun SettingsPage() {
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .border(1.dp, colorResource(R.color.light_blue), CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp))
+                        .border(1.dp, colorResource(color.light_blue), CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp))
                         .background(
-                            if (selectedLanguage == "FR") colorResource(R.color.light_blue) else colorResource(R.color.deep_blue),
+                            if (selectedLanguage == "FR") colorResource(color.light_blue) else colorResource(color.deep_blue),
                             CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp)
                         )
                         .clickable { selectedLanguage = "FR" }
@@ -133,8 +124,8 @@ fun SettingsPage() {
                 ) {
                     Text(
                         "FR",
-                        color = if (selectedLanguage == "FR") colorResource(R.color.deep_blue) else colorResource(R.color.light_blue),
-                        fontFamily = fontAldrichSettings,
+                        color = if (selectedLanguage == "FR") colorResource(color.deep_blue) else colorResource(color.light_blue),
+                        fontFamily = fontAldrich,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -143,9 +134,9 @@ fun SettingsPage() {
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .border(1.dp, colorResource(R.color.light_blue), CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp))
+                        .border(1.dp, colorResource(color.light_blue), CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp))
                         .background(
-                            if (selectedLanguage == "EN") colorResource(R.color.light_blue) else colorResource(R.color.deep_blue),
+                            if (selectedLanguage == "EN") colorResource(color.light_blue) else colorResource(color.deep_blue),
                             CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp)
                         )
                         .clickable { selectedLanguage = "EN" }
@@ -154,8 +145,8 @@ fun SettingsPage() {
                 ) {
                     Text(
                         "EN",
-                        color = if (selectedLanguage == "EN") colorResource(R.color.deep_blue) else colorResource(R.color.light_blue),
-                        fontFamily = fontAldrichSettings,
+                        color = if (selectedLanguage == "EN") colorResource(color.deep_blue) else colorResource(color.light_blue),
+                        fontFamily = fontAldrich,
                         fontWeight = FontWeight.Bold
                     )
                 }
