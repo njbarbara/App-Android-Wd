@@ -23,7 +23,7 @@ import com.sae.loupgarou.pages.Retour
 
 
 @Composable
-fun CreationPage(){
+fun CreationPage(onReturn: () -> Unit){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(id = color.marine))
@@ -43,6 +43,6 @@ fun CreationPage(){
         NbPlayers()
         Duree()
         CreateButton()
-        Retour()
+        Retour(onReturn)
     }
 }
