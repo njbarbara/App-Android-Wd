@@ -56,7 +56,6 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.string
-import com.sae.loupgarou.pages.rules.fontAldrich
 
 
 /*

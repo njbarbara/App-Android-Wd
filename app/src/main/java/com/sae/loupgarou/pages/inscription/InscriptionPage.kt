@@ -37,7 +37,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.ui.theme.fontAldrich
+
 
 @Composable
 fun InscriptionPage() {
