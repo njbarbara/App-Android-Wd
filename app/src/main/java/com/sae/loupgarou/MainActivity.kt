@@ -8,8 +8,15 @@ import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sae.loupgarou.data.api.RetrofitClient
+import com.sae.loupgarou.pages.connection.ConnectionPage
+import com.sae.loupgarou.pages.creation.CreationPage
+import com.sae.loupgarou.pages.credits.CreditsPage
+import com.sae.loupgarou.pages.home.HomePage
+import com.sae.loupgarou.pages.main.MainPage
+import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
+import com.sae.loupgarou.pages.rules.Rules
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +39,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             SAELoupGarouTheme {
                 // On passe le ViewModel (qui a maintenant accès à l'API) à ton écran
-                LobbiesScreen(viewModel = lobbiesViewModel)
+                //LobbiesScreen(viewModel = lobbiesViewModel)
+                //CreditsPage()
+                //HomePage()
+                //CreationPage()
+                //ConnectionPage()
+                //InscriptionPage()
+                //MainPage()
+                Rules()
+
             }
         }
     }
