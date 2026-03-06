@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.sp
 
 // Assure-toi que ces imports correspondent bien à la structure de ton projet
 import com.sae.loupgarou.R
-import com.sae.loupgarou.model.Lobby
+import com.sae.loupgarou.models.Lobby
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
 // --- VARIABLES GLOBALES (Couleurs et Polices) ---

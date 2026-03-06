@@ -15,7 +15,7 @@ data class Lobby(
 )
 */
 
-package com.sae.loupgarou.model
+package com.sae.loupgarou.models
 
 import kotlinx.serialization.Serializable
 
