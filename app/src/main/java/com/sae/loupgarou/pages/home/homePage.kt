@@ -365,22 +365,22 @@ fun HomePage() {
                 .fillMaxSize()
                // .background(Color.DarkGray.copy(alpha = 0.7f))//(alpha = 0.4f)) // 👈 intensité
         )
-        if(randomValue >=0.5) {
+
 
             settingsButton(Modifier.align(Alignment.TopStart))
             ProfileButton(Modifier.align(Alignment.TopEnd))
-            StartButton(Modifier.align(Alignment.Center).offset(y = 70.dp)) {}
-            HistoryButton(Modifier.align(Alignment.Center).offset(y = 160.dp)) {}
-            RegleButton(Modifier.align(Alignment.Center).offset(y = 250.dp)) {}
-            CreditButton(Modifier.align(Alignment.Center).offset(y = 340.dp)) {}
-        }else{
+            StartButton(Modifier.align(Alignment.Center).offset(y = -220.dp)) {}
+            HistoryButton(Modifier.align(Alignment.Center).offset(y = 0.dp)) {}
+            RegleButton(Modifier.align(Alignment.Center).offset(y = 90.dp)) {}
+            CreditButton(Modifier.align(Alignment.Center).offset(y = 180.dp)) {}
+        /*
             settingsButton(Modifier.align(Alignment.TopStart))
             ProfileButton(Modifier.align(Alignment.TopEnd))
-            StartButtonWolf(Modifier.align(Alignment.Center).offset(y = 70.dp)) {}
-            HistoryButtonWolf(Modifier.align(Alignment.Center).offset(y = 160.dp)) {}
-            RegleButton(Modifier.align(Alignment.Center).offset(y = 250.dp)) {}
-            CreditButton(Modifier.align(Alignment.Center).offset(y = 340.dp)) {}
-        }
+            StartButtonWolf(Modifier.align(Alignment.Center).offset(y = -220.dp)) {}
+            HistoryButtonWolf(Modifier.align(Alignment.Center).offset(y = 0.dp)) {}
+            RegleButton(Modifier.align(Alignment.Center).offset(y = 90.dp)) {}
+            CreditButton(Modifier.align(Alignment.Center).offset(y = 180.dp)) {}*/
+
     }
 }
 
