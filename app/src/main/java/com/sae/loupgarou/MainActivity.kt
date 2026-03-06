@@ -16,10 +16,12 @@ import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.rules.RulePage
 import com.sae.loupgarou.ui.theme.SettingsPage
+import com.sae.loupgarou.pages.home.HomePage
 
 val fontAldrich = FontFamily(
     Font(font.aldrich_regular, FontWeight.Normal)
 )
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +32,12 @@ class MainActivity : ComponentActivity() {
                 //MainPage()
                 //CreditsPage()
                 //SettingsPage()
+                //Credits()
                 //RulePage()
                 //InscriptionPage()
                 //ConnectionPage()
                 CreationPage()
+                HomePage()
             }
         }
     }
