@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">SAE LoupGarou</string>
+    <string name="return_button">RETOUR À L\'ACCEUIL</string>
+    <string name="inscription">INSCRIPTION</string>
+    <string name="email_label">EMAIL</string>
+    <string name="email_invalid">Adresse e-mail invalide.</string>
+    <string name="username_label">NOM D\'UTILISATEUR</string>
+    <string name="password_label">MOT DE PASSE</string>
+    <string name="password_too_short">Il faut au moins 6 caractères.</string>
+    <string name="confirm_password_label">CONFIRMER LE MOT DE PASSE</string>
+    <string name="passwords_dont_match">Les mots de passe ne correspondent pas.</string>
+    <string name="btn_register">S\'INSCRIRE</string>
+    <string name="btn_reset">RÉINITIALISER</string>
+    <string name="already_registered">Déjà inscrit ? </string>
+    <string name="login_link">Se connecter</string>
     <string name="credits">CRÉDITS</string>
     <string name="context1">Contexte du Projet</string>
     <string name="context2">Ce projet a été réalisé dans le cadre de la SAE 2A du BUT informatique.</string>
@@ -9,11 +22,9 @@
     <string name="members1">Anis YOUNES, Cyril BARRALLON,</string>
     <string name="members2">Esteban JACQUES, Najib BARBARA,</string>
     <string name="members3">Neil BONNETOT, Robin Werner</string>
-    <string name="return_button">RETOUR À L\'ACCEUIL</string>
-
     <string name="rules">RÈGLES DU JEU</string>
     <string name="chose_right">Choisissez bien et n\'exécutez pas vos concitoyens. Bonne chance !\n</string>
-    <string name="welcome">Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit...\n</string>
+    <string name="welcome">Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit…\n</string>
     <string name="roles">Les Rôles : </string>
     <string name="citoyen">• Citoyen (Villageois) :\ </string>
     <string name="citoyen_explain">Le jour, participez au débat et votez pour exécuter un joueur suspecté d\'être un traître. Votre but est d\'éliminer tous les traîtres.</string>
@@ -26,7 +37,6 @@
     <string name="day_explain">Les citoyens découvrent la victime de la nuit. Un débat s\'ouvre, suivi d\'un vote pour exécuter un suspect.</string>
     <string name="end">3. Fin de la partie :\ </string>
     <string name="end_explain">La partie se termine quand tous les traîtres sont éliminés (victoire des citoyens) ou quand les traîtres sont en supériorité numérique (victoire des traîtres).\n</string>
-
     <string name="lobbies_background_desc">Background</string>
     <string name="lobbies_title">LOBBIES\n\nDISPONIBLES</string>
     <string name="lobbies_subtitle">Rejoignez une partie ou créez votre propre lobby</string>
@@ -42,4 +52,23 @@
     <string name="lobbies_empty_title">Aucun lobby disponible</string>
     <string name="lobbies_empty_subtitle">Créez-en un pour commencer !</string>
     <string name="lobby_players_count">%1$d / %2$d Joueurs</string>
+    <string name="new_game">"NOUVELLE PARTIE"</string>
+    <string name="create_game">"CRÉER LA PARTIE"</string>
+    <string name="nb_players">"Nombre de joueurs maximum : "</string>
+    <string name="duree">"Durée d'une phase : "</string>
+    <string name="settings">PARAMETRES</string>
+    <string name="volume_general">Volume Général</string>
+    <string name="volume_sons">Volume Sons</string>
+    <string name="volume_musique">Volume Musique</string>
+    <string name="mode_clair_sombre">MODE CLAIR/SOMBRE</string>
+    <string name="main_title">WOLVES OF\nDEMOCRACY</string>
+    <string name="main_subtitle">Choisissez votre destinée</string>
+    <string name="btn_login">SE CONNECTER</string>
+    <string name="login_title">IDENTIFICATION</string>
+    <string name="login_subtitle">Accès au réseau sécurisé</string>
+    <string name="login_email_label">Adresse Email</string>
+    <string name="login_password_label">Mot de passe</string>
+    <string name="login_button_text">SE CONNECTER</string>
+    <string name="login_background_description">Fond d’écran</string>
+    <string name="or">OU</string>
 </resources>
