@@ -9,7 +9,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.SolidColor
@@ -190,8 +193,17 @@ fun HistoryButton(modifier: Modifier = Modifier,
             .clip(RectangleShape) // rond
             .background(
                 brush = androidx.compose.ui.graphics.Brush.verticalGradient(
-                    colors = listOf(Color(0xFFFF5252), Color(0xFFD32F2F))
+                    colors = listOf(Color(0xFFFF5252), Color(0xFFD32F2F)),
+
                 )
+            )
+            .border(
+                width = 2.dp,
+                /*brush = Brush.horizontalGradient(
+                    listOf(Color.Red, Color.DarkGray)
+                ),*/
+                color = colorResource(id = color.light_blue),
+                shape = RectangleShape
             )
             .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
             //.shadow(8.dp, CircleShape) // ombre
@@ -200,6 +212,130 @@ fun HistoryButton(modifier: Modifier = Modifier,
     ) {
         Text(
             text = "Historique",
+            color = Color.White,
+            style = androidx.compose.ui.text.TextStyle(
+                fontFamily = fontAldrich,
+                fontSize = 30.sp, // 👈 maintenant reconnu
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                shadow = Shadow(color = colorResource(id = color.light_blue), blurRadius = 60f)
+            )
+        )
+    }
+}
+
+
+
+
+@Composable
+fun HistoryButtonWolf(modifier: Modifier = Modifier,
+                  onClick: () -> Unit) {
+    Box(
+        modifier = modifier
+            .size(240.dp,60.dp) // taille du bouton
+            .clip(RectangleShape) // rond
+            .background(
+                brush = androidx.compose.ui.graphics.Brush.verticalGradient(
+                    colors = listOf(Color(0xFFFF5252), Color(0xFFD32F2F))
+                )
+            )
+            .border(
+                width = 2.dp,
+                /*brush = Brush.horizontalGradient(
+                    listOf(Color.Red, Color.DarkGray)
+                ),*/
+                color = colorResource(id = color.light_red2),
+                shape = RectangleShape
+            )
+            .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
+            //.shadow(8.dp, CircleShape) // ombre
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center,
+
+    ) {
+        Text(
+            text = "Historique",
+            color = Color.White,
+            style = androidx.compose.ui.text.TextStyle(
+                fontFamily = fontAldrich,
+                fontSize = 30.sp, // 👈 maintenant reconnu
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                shadow = Shadow(color = colorResource(id = color.light_red), blurRadius = 60f)
+            )
+        )
+    }
+}
+
+
+
+@Composable
+fun RegleButton(modifier: Modifier = Modifier,
+                 onClick: () -> Unit) {
+    Box(
+        modifier = modifier
+            .size(240.dp,60.dp) // taille du bouton
+            .clip(RectangleShape) // rond
+            .background(
+                brush = androidx.compose.ui.graphics.Brush.verticalGradient(
+                    colors = listOf(Color(0xFFFF5252), Color(0xFFD32F2F))
+                )
+            )
+            .border(
+                width = 2.dp,
+                /*brush = Brush.horizontalGradient(
+                    listOf(Color.Red, Color.DarkGray)
+                ),*/
+                color = colorResource(id = color.light_blue),
+                shape = RectangleShape
+            )
+            .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
+            //.shadow(8.dp, CircleShape) // ombre
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center,
+
+        ) {
+        Text(
+            text = "Règles",
+            color = Color.White,
+            style = androidx.compose.ui.text.TextStyle(
+                fontFamily = fontAldrich,
+                fontSize = 30.sp, // 👈 maintenant reconnu
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                shadow = Shadow(color = colorResource(id = color.light_blue), blurRadius = 60f)
+            )
+        )
+    }
+}
+
+
+
+@Composable
+fun CreditButton(modifier: Modifier = Modifier,
+                      onClick: () -> Unit) {
+    Box(
+        modifier = modifier
+            .size(240.dp,60.dp) // taille du bouton
+            .clip(RectangleShape) // rond
+            .background(
+                brush = androidx.compose.ui.graphics.Brush.verticalGradient(
+                    colors = listOf(Color(0xFFFF5252), Color(0xFFD32F2F))
+                )
+            )
+            .border(
+                width = 2.dp,
+                /*brush = Brush.horizontalGradient(
+                    listOf(Color.Red, Color.DarkGray)
+                ),*/
+                color = colorResource(id = color.light_blue),
+                shape = RectangleShape
+            )
+            .background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
+            //.shadow(8.dp, CircleShape) // ombre
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center,
+
+        ) {
+        Text(
+            text = "Crédit",
             color = Color.White,
             style = androidx.compose.ui.text.TextStyle(
                 fontFamily = fontAldrich,
@@ -235,11 +371,15 @@ fun HomePage() {
             ProfileButton(Modifier.align(Alignment.TopEnd))
             StartButton(Modifier.align(Alignment.Center).offset(y = 70.dp)) {}
             HistoryButton(Modifier.align(Alignment.Center).offset(y = 160.dp)) {}
+            RegleButton(Modifier.align(Alignment.Center).offset(y = 250.dp)) {}
+            CreditButton(Modifier.align(Alignment.Center).offset(y = 340.dp)) {}
         }else{
             settingsButton(Modifier.align(Alignment.TopStart))
             ProfileButton(Modifier.align(Alignment.TopEnd))
             StartButtonWolf(Modifier.align(Alignment.Center).offset(y = 70.dp)) {}
-            HistoryButton(Modifier.align(Alignment.Center).offset(y = 160.dp)) {}
+            HistoryButtonWolf(Modifier.align(Alignment.Center).offset(y = 160.dp)) {}
+            RegleButton(Modifier.align(Alignment.Center).offset(y = 250.dp)) {}
+            CreditButton(Modifier.align(Alignment.Center).offset(y = 340.dp)) {}
         }
     }
 }
