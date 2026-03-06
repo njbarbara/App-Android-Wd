@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
+import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.rules.RulePage
 import com.sae.loupgarou.ui.theme.SettingsPage
@@ -33,6 +34,9 @@ sealed interface Routes {
 
     @Serializable
     data object ConnectionRoute
+
+    @Serializable
+    data object HomeRoute
 }
 
 @Composable
@@ -40,7 +44,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.MainRoute
+        startDestination = Routes.CreditsRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -51,7 +55,7 @@ fun MainNavHost() {
 
         composable<Routes.RulesRoute> {
             RulePage(
-                onReturn = { navController.navigate(Routes.MainRoute) }
+                onReturn = { navController.navigate(Routes.HomeRoute) }
             )
         }
 
@@ -64,17 +68,21 @@ fun MainNavHost() {
         }
 
         composable<Routes.CreditsRoute> {
-            CreditsPage(onReturn = { navController.navigate(Routes.MainRoute) })
+            CreditsPage(onReturn = { navController.navigate(Routes.HomeRoute) })
         }
 
         composable<Routes.CreationRoute> {
-            CreationPage(onReturn = { navController.navigate(Routes.MainRoute) })
+            CreationPage(onReturn = { navController.navigate(Routes.HomeRoute) })
         }
 
         composable<Routes.ConnectionRoute> {
             ConnectionPage(
-                onConnection = { navController.navigate(Routes.MainRoute) }
+                onConnection = { navController.navigate(Routes.HomeRoute) }
             )
+        }
+
+        composable<Routes.HomeRoute>{
+            HomePage()
         }
     }
 }
