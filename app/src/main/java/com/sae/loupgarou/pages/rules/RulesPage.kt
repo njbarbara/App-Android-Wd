@@ -22,7 +22,7 @@ import com.sae.loupgarou.fontAldrich
 
 
 @Composable
-fun RulePage(){
+fun RulePage(onReturn: () -> Unit){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(id = color.marine))
@@ -37,7 +37,7 @@ fun RulePage(){
             color = colorResource(id = color.light_blue),
             fontFamily = fontAldrich
         )
-        Retour()
+        Retour(onReturn)
     }
 }
 
