@@ -37,6 +37,15 @@ sealed interface Routes {
 
     @Serializable
     data object HomeRoute
+
+    @Serializable
+    data object ProfileRoute
+
+    @Serializable
+    data object PlayRoute
+
+    @Serializable
+    data object HistoryRoute
 }
 
 @Composable
@@ -44,7 +53,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.CreditsRoute
+        startDestination = Routes.HomeRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -64,7 +73,10 @@ fun MainNavHost() {
         }
 
         composable<Routes.InscriptionRoute> {
-            InscriptionPage()
+            InscriptionPage(
+                onInscription = { navController.navigate(Routes.HomeRoute) },
+                onConnection = { navController.navigate(Routes.HomeRoute) }
+            )
         }
 
         composable<Routes.CreditsRoute> {
@@ -82,7 +94,14 @@ fun MainNavHost() {
         }
 
         composable<Routes.HomeRoute>{
-            HomePage()
+            HomePage(
+                onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
+                onProfileClick = { navController.navigate(Routes.ProfileRoute) },
+                onPlayClick = { navController.navigate(Routes.PlayRoute) },
+                onHistoryClick = { navController.navigate(Routes.HistoryRoute) },
+                onRulesClick = { navController.navigate(Routes.RulesRoute) },
+                onCreditsClick = { navController.navigate(Routes.CreditsRoute) }
+            )
         }
     }
 }

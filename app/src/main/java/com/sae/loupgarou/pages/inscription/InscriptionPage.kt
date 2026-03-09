@@ -40,7 +40,9 @@ import com.sae.loupgarou.R
 import com.sae.loupgarou.fontAldrich
 
 @Composable
-fun InscriptionPage() {
+fun InscriptionPage(onInscription: () -> Unit,
+                    onConnection: () -> Unit
+) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -132,7 +134,7 @@ fun InscriptionPage() {
 
 
             Button(
-                onClick = { /* TODO */ },
+                onClick = { onInscription() },
                 shape = CutCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -179,7 +181,7 @@ fun InscriptionPage() {
                     text = stringResource(id = R.string.login_link),
                     color = colorResource(id = R.color.light_blue),
                     fontFamily = fontAldrich,
-                    modifier = Modifier.clickable { /* TODO */ }
+                    modifier = Modifier.clickable { onConnection() }
                 )
             }
         }
