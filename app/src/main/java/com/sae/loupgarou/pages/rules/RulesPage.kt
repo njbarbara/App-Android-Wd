@@ -14,21 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import com.sae.loupgarou.R.color
-import com.sae.loupgarou.R.font
 import com.sae.loupgarou.R.string
 import com.sae.loupgarou.pages.Retour
+import com.sae.loupgarou.fontAldrich
 
 
-val fontAldrich = FontFamily(
-    Font(font.aldrich_regular, FontWeight.Normal)
-)
 
 @Composable
-fun RulePage(){
+fun RulePage(onReturn: () -> Unit){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(id = color.marine))
@@ -43,6 +37,7 @@ fun RulePage(){
             color = colorResource(id = color.light_blue),
             fontFamily = fontAldrich
         )
-        Retour()
+        Retour(onReturn)
     }
 }
+

@@ -1,4 +1,4 @@
-package com.sae.loupgarou.pages.authentification.inscription
+package com.sae.loupgarou.pages.inscription
 
 
 import android.util.Patterns
@@ -20,6 +20,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,7 +52,8 @@ val fontAldrich = FontFamily(
 )
 
 @Composable
-fun InscriptionPage(viewModel: RegisterViewModel = viewModel()) {
+fun InscriptionPage(viewModel: RegisterViewModel = viewModel(),onInscription: () -> Unit,
+                    onConnection: () -> Unit) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -142,7 +145,10 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel()) {
 
 
             Button(
-                onClick = { viewModel.register(username, email, password) },
+                onClick = {
+                    viewModel.register(username, email, password)
+                    onInscription()
+                },
                 enabled = !viewModel.isLoading,
                 shape = CutCornerShape(10.dp),
                 modifier = Modifier
@@ -205,7 +211,7 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel()) {
                     text = stringResource(id = R.string.login_link),
                     color = colorResource(id = R.color.light_blue),
                     fontFamily = fontAldrich,
-                    modifier = Modifier.clickable { /* TODO */ }
+                    modifier = Modifier.clickable { onConnection() }
                 )
             }
         }

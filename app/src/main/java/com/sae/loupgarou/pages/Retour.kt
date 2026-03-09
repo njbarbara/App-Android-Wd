@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.string
-import com.sae.loupgarou.pages.credits.fontAldrich
+import com.sae.loupgarou.fontAldrich
 
 @Composable
-fun Retour(){
+fun Retour(onReturn: () -> Unit){
     OutlinedButton(
-        onClick = { /* TODO */ },
+        onClick = { onReturn() },
         shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
         modifier = Modifier
             .fillMaxWidth()

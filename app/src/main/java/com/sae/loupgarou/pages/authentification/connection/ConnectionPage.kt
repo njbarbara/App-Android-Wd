@@ -1,4 +1,4 @@
-package com.sae.loupgarou.pages.authentification.connection
+package com.sae.loupgarou.pages.connection
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -52,11 +52,12 @@ val AldrichFont = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
 )
 
+
 @Composable
 fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du paramètre ici
     var pseudo by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-   
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

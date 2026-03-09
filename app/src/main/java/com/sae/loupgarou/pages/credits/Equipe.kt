@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.string
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun Equipe(){
