@@ -25,9 +25,9 @@ val fontAldrich = FontFamily(
 )
 
 @Composable
-fun Retour(){
+fun Retour(onReturn: () -> Unit){
     OutlinedButton(
-        onClick = { /* TODO */ },
+        onClick = { onReturn() },
         shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
         modifier = Modifier
             .fillMaxWidth()

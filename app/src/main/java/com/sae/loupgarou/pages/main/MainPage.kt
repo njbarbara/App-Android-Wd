@@ -35,8 +35,9 @@ import com.sae.loupgarou.ui.theme.fontAldrich
 
 
 @Composable
-fun MainPage() {
-
+fun MainPage(onNavigateToConnection: () -> Unit,
+             onNavigateToInscription: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -95,7 +96,7 @@ fun MainPage() {
             )
 
             Button(
-                onClick = { /* TODO */ },
+                onClick = {onNavigateToConnection()},
                 shape = CutCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -121,7 +122,7 @@ fun MainPage() {
             )
 
             OutlinedButton(
-                onClick = { /* TODO */ },
+                onClick = { onNavigateToInscription() },
                 shape = CutCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.deep_blue)),
                 modifier = Modifier.fillMaxWidth(),

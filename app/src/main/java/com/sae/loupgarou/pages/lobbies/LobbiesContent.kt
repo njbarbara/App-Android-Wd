@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.model.Lobby
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun LobbiesContent(filteredLobbies: List<Lobby>) {

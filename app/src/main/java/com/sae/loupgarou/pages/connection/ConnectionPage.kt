@@ -43,7 +43,7 @@ val fontAldrich = FontFamily(
 
 
 @Composable
-fun ConnectionPage() {
+fun ConnectionPage(onConnection: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -116,7 +116,7 @@ fun ConnectionPage() {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { /* Action de connexion ici */ },
+                    onClick = { onConnection()},
                     shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.light_blue)),
                     modifier = Modifier

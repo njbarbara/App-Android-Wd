@@ -22,7 +22,7 @@ import com.sae.loupgarou.ui.theme.fontAldrich
 import com.sae.loupgarou.pages.Retour
 
 @Composable
-fun CreditsPage(){
+fun CreditsPage(onReturn: () -> Unit){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = colorResource(id = color.marine))
@@ -41,6 +41,6 @@ fun CreditsPage(){
         )
         Context()
         Equipe()
-        Retour()
+        Retour(onReturn)
     }
 }
