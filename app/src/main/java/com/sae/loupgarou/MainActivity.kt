@@ -39,14 +39,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             SAELoupGarouTheme {
                 // On passe le ViewModel (qui a maintenant accès à l'API) à ton écran
-                //LobbiesScreen(viewModel = lobbiesViewModel)
+                LobbiesScreen(viewModel = lobbiesViewModel)
                 //CreditsPage()
                 //HomePage()
                 //CreationPage()
                 //ConnectionPage()
                 //InscriptionPage()
                 //MainPage()
-                Rules()
+                //Rules()
 
             }
         }
