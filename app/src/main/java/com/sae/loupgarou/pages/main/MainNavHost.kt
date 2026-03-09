@@ -57,7 +57,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.GameSelectionRoute
+        startDestination = Routes.MainRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -105,11 +105,12 @@ fun MainNavHost() {
             )
         }
 
+
         composable<Routes.HomeRoute>{
             HomePage(
                 onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
                 onProfileClick = { navController.navigate(Routes.ProfileRoute) },
-                onPlayClick = { navController.navigate(Routes.PlayRoute) },
+                onPlayClick = { navController.navigate(Routes.GameSelectionRoute) },
                 onHistoryClick = { navController.navigate(Routes.HistoryRoute) },
                 onRulesClick = { navController.navigate(Routes.RulesRoute) },
                 onCreditsClick = { navController.navigate(Routes.CreditsRoute) }
