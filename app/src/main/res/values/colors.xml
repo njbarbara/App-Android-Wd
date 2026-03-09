@@ -14,6 +14,10 @@
 
     <!-- Wolf colors-->
     <color name="red"> #FFFF0000</color>
+    <color name="Cyan400"> #FF22D3EE</color>
+    <color name="Cyan600"> #FF0891B2</color>
+    <color name="Slate900"> #FF0F172A</color>
+    <color name="Slate800"> #FF1E293B</color>
     <color name="light_red"> #C21807</color>
     <color name="light_red2">#D91B07</color>
 </resources>

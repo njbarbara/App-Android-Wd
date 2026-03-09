@@ -31,6 +31,13 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.R.string
+
+
+/*
+val insets = rootWindowInsets
+val topRight = insets.getRoundedCorner(RoundedCorner.POSITION_TOP_RIGHT) ?: return*/
+
 
 
 @Composable

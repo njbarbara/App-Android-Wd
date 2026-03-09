@@ -56,4 +56,15 @@
     <string name="login_button_text">SE CONNECTER</string>
     <string name="login_background_description">Fond d’écran</string>
     <string name="or">OU</string>
+    <string name="lobbies_background_desc">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_filter_all">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_filter_waiting">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_filter_playing">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_filter_ended">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_subtitle">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_title">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_empty_emoji">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_empty_subtitle">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+    <string name="lobbies_empty_title">A CHANGER, JSP CE QU\'IL FAUT METTRE</string>
+
 </resources>
