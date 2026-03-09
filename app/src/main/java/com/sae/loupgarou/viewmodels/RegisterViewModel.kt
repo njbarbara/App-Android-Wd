@@ -26,7 +26,7 @@ class RegisterViewModel @JvmOverloads constructor(
             isLoading = true
             registerResult = null
             try{
-                val response = apiService.register(RegisterRequest(login, email, password))
+                val response = apiService.register(RegisterRequest(login, password, email))
                 if (response.isSuccessful) {
                     val body = response.body()
                     val token = body?.token
@@ -35,8 +35,7 @@ class RegisterViewModel @JvmOverloads constructor(
                         registerResult = "Succès : Inscription réussie"
                     }
                 }else {
-                    val errorBody = response.errorBody()?.string()
-                    registerResult = "Erreur : ${errorBody ?: "Erreur inconnue"} - Inscription échouée"
+                    registerResult = "Erreur : ${response.code()} -Erreur inconnue - Inscription échouée"
                 }
             }catch(e: Exception){
                 registerResult = "Erreur réseau : ${e.localizedMessage}"

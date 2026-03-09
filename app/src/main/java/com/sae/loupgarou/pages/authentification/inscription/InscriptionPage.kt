@@ -162,7 +162,15 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel()) {
                 }
             }
             viewModel.registerResult?.let { result ->
-                Text(text = result, color = Color.Red)
+                val textColor = if (result.contains("Succès", ignoreCase = true)) {
+                    Color.Green
+                } else {
+                    Color.Red
+                }
+                Text(
+                    text = result,
+                    color = textColor
+                )
             }
 
             OutlinedButton(

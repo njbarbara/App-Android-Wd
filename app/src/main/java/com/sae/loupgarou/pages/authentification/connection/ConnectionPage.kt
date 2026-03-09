@@ -155,7 +155,15 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du param√
                 }
                 Retour()
                 viewModel.loginResult?.let { result ->
-                    Text(text = result, color = Color.Red)
+                    val textColor = if (result.contains("Succ√®s", ignoreCase = true)) {
+                        Color.Green
+                    } else {
+                        Color.Red
+                    }
+                    Text(
+                        text = result,
+                        color = textColor
+                    )
                 }
             }
         }

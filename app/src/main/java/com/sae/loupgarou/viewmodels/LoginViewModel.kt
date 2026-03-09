@@ -22,7 +22,6 @@ class LoginViewModel @JvmOverloads constructor(
     
     var isLoading by mutableStateOf(false)
     var loginResult by mutableStateOf<String?>(null)
-    var registerResult by mutableStateOf<String?>(null)
 
 
     fun login(login: String, password: String) {
@@ -47,30 +46,6 @@ class LoginViewModel @JvmOverloads constructor(
                 }
             } catch (e: Exception) {
                 loginResult = "Erreur réseau : ${e.localizedMessage}"
-            } finally {
-                isLoading = false
-            }
-        }
-    }
-
-    fun register(login: String, email: String, password: String) {
-        viewModelScope.launch {
-            isLoading = true
-            registerResult = null
-            try{
-                val response = apiService.register(RegisterRequest(login, email, password))
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    val token = body?.token
-                    if (token != null) {
-                        sessionManager.saveToken(token)
-                        registerResult = "Succès : Inscription réussie"
-                    } else {
-                        registerResult = "Erreur : Token non reçu"
-                    }
-                }
-            }catch(e: Exception){
-                registerResult = "Erreur réseau : ${e.localizedMessage}"
             } finally {
                 isLoading = false
             }
