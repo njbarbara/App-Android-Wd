@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
@@ -46,6 +47,9 @@ sealed interface Routes {
 
     @Serializable
     data object HistoryRoute
+
+    @Serializable
+    data object GameSelectionRoute
 }
 
 @Composable
@@ -53,7 +57,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeRoute
+        startDestination = Routes.GameSelectionRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -90,6 +94,14 @@ fun MainNavHost() {
         composable<Routes.ConnectionRoute> {
             ConnectionPage(
                 onConnection = { navController.navigate(Routes.HomeRoute) }
+            )
+        }
+
+        composable<Routes.GameSelectionRoute>{
+            GameSelectionPage(
+                onCreateButtonClick = { navController.navigate(Routes.CreationRoute) },
+                onJoinButtonClick = { /*navController.navigate(Routes.LobbyRoute)*/ },
+                onReturn = { navController.navigate(Routes.HomeRoute) }
             )
         }
 
