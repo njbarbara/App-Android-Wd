@@ -15,6 +15,7 @@ import com.sae.loupgarou.viewmodel.LobbiesViewModel
 fun LobbiesScreen(
     onNavigateBack: () -> Unit,
     onCreateLobby: () -> Unit,
+    onLobbyClick: () -> Unit,
     viewModel: LobbiesViewModel // On passe le ViewModel en paramètre (c'est plus propre pour l'injection)
 ) {
     var selectedFilter by remember { mutableStateOf("all") }
@@ -46,7 +47,7 @@ fun LobbiesScreen(
                 onRefresh = { viewModel.fetchLobbies() } // Appel manuel à l'API
             )
             Filters(selectedFilter = selectedFilter, onFilterChange = { selectedFilter = it })
-            LobbiesContent(filteredLobbies = filteredLobbies)
+            LobbiesContent(filteredLobbies = filteredLobbies, onLobbyClick = onLobbyClick)
         }
     }
 }

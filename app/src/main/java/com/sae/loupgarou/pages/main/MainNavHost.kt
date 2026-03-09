@@ -1,5 +1,6 @@
 package com.sae.loupgarou.pages.main
 
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
@@ -107,7 +108,8 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
         composable<Routes.LobbyRoute> {
             LobbiesScreen(
                 onNavigateBack = {},
-                onCreateLobby = {},
+                onCreateLobby = {navController.navigate(Routes.CreationRoute)},
+                onLobbyClick = { Log.i("Lobby", "Lobby Clicked")},
                 viewModel = viewModel
             )
         }

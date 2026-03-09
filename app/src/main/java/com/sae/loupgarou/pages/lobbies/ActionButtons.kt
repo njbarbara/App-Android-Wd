@@ -1,5 +1,6 @@
 package com.sae.loupgarou.pages.lobbies
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -30,7 +31,9 @@ fun ActionButtons(onCreateLobby: () -> Unit, onRefresh: () -> Unit) {
         modifier = Modifier.padding(bottom = 24.dp)
     ) {
         Button(
-            onClick = onCreateLobby,
+            onClick = {
+                Log.i("Lobby", "création d'un lobby")
+                onCreateLobby()},
             shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = color.Cyan600))
         ) {
