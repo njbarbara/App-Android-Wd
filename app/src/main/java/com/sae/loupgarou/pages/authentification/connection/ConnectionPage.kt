@@ -54,7 +54,7 @@ val AldrichFont = FontFamily(
 
 
 @Composable
-fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du param√®tre ici
+fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> Unit, onReturn: () -> Unit) { // Ajout du param√®tre ici
     var pseudo by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -134,7 +134,9 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du param√
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { viewModel.login(pseudo, password) },
+                    onClick = { viewModel.login(pseudo, password)
+                                onConnection()
+                              },
                     enabled = !viewModel.isLoading,
                     shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.light_blue)),
@@ -154,7 +156,7 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel()) { // Ajout du param√
                         )
                     }
                 }
-                Retour()
+                Retour(onReturn)
                 viewModel.loginResult?.let { result ->
                     val textColor = if (result.contains("Succ√®s", ignoreCase = true)) {
                         Color.Green

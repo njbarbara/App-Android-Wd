@@ -53,7 +53,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeRoute
+        startDestination = Routes.MainRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -89,7 +89,8 @@ fun MainNavHost() {
 
         composable<Routes.ConnectionRoute> {
             ConnectionPage(
-                onConnection = { navController.navigate(Routes.HomeRoute) }
+                onConnection = { navController.navigate(Routes.HomeRoute) },
+                onReturn = { navController.navigate(Routes.MainRoute) }
             )
         }
 

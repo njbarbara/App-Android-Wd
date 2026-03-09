@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sae.loupgarou.R
+import com.sae.loupgarou.pages.authentification.inscription.AuthTextField
 import com.sae.loupgarou.viewmodels.LoginViewModel
 import com.sae.loupgarou.viewmodels.RegisterViewModel
 
