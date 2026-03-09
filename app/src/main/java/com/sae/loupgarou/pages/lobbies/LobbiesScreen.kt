@@ -5,13 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R
-import com.sae.loupgarou.fontAldrich
-/*import com.sae.loupgarou.viewmodel.LobbiesViewModel
+import com.sae.loupgarou.ui.theme.fontAldrich
+import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
 
 @Composable
@@ -52,4 +49,4 @@ fun LobbiesScreen(
             LobbiesContent(filteredLobbies = filteredLobbies)
         }
     }
-}*/
+}

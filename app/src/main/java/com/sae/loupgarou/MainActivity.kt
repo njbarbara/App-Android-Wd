@@ -5,6 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sae.loupgarou.data.api.RetrofitClient
@@ -18,6 +21,10 @@ import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
 import com.sae.loupgarou.pages.rules.Rules
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
+
+val fontAldrich = FontFamily(
+    Font(R.font.aldrich_regular, FontWeight.Normal)
+)
 
 class MainActivity : ComponentActivity() {
 
@@ -39,7 +46,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SAELoupGarouTheme {
                 // On passe le ViewModel (qui a maintenant accès à l'API) à ton écran
-                LobbiesScreen(viewModel = lobbiesViewModel)
+                //LobbiesScreen(viewModel = lobbiesViewModel)
                 //CreditsPage()
                 //HomePage()
                 //CreationPage()
