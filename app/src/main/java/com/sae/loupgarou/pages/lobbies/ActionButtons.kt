@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R.color
+import com.sae.loupgarou.fontAldrich
 
 @Composable
 fun ActionButtons(onCreateLobby: () -> Unit, onRefresh: () -> Unit) {

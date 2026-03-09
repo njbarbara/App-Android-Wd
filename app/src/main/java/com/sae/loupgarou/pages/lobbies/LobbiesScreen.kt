@@ -10,11 +10,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R
-import com.sae.loupgarou.viewmodel.LobbiesViewModel
+import com.sae.loupgarou.fontAldrich
+/*import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
-val fontAldrich = FontFamily(
-    Font(R.font.aldrich_regular, FontWeight.Normal)
-)
 
 @Composable
 fun LobbiesScreen(
@@ -54,4 +52,4 @@ fun LobbiesScreen(
             LobbiesContent(filteredLobbies = filteredLobbies)
         }
     }
-}
+}*/
