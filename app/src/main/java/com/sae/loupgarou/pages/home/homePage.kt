@@ -34,7 +34,7 @@ import com.sae.loupgarou.fontAldrich
 
 
 @Composable
-fun settingsButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun SettingsButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
     Box(
         modifier = modifier
             .padding(start = 16.dp, top = 52.dp) // marge côté et top
@@ -236,7 +236,7 @@ fun HomePage(onSettingsClick: () -> Unit,
         )
 
 
-            settingsButton(Modifier.align(Alignment.TopStart), onSettingsClick)
+            SettingsButton(Modifier.align(Alignment.TopStart), onSettingsClick)
             ProfileButton(Modifier.align(Alignment.TopEnd), onProfileClick)
             StartButton(Modifier.align(Alignment.Center).offset(y = -220.dp), onPlayClick)
             HistoryButton(Modifier.align(Alignment.Center).offset(y = 0.dp), onHistoryClick)
