@@ -19,6 +19,7 @@ import com.sae.loupgarou.pages.main.MainPage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
+import com.sae.loupgarou.pages.main.MainNavHost
 import com.sae.loupgarou.pages.rules.Rules
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
@@ -47,14 +48,7 @@ class MainActivity : ComponentActivity() {
             SAELoupGarouTheme {
                 // On passe le ViewModel (qui a maintenant accès à l'API) à ton écran
                 //LobbiesScreen(viewModel = lobbiesViewModel)
-                //CreditsPage()
-                //HomePage()
-                //CreationPage()
-                //ConnectionPage()
-                //InscriptionPage()
-                //MainPage()
-                //Rules()
-
+                MainNavHost(viewModel = lobbiesViewModel)
             }
         }
     }

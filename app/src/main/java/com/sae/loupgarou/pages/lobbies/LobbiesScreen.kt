@@ -13,8 +13,8 @@ import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
 @Composable
 fun LobbiesScreen(
-    onNavigateBack: () -> Unit = {},
-    onCreateLobby: () -> Unit = {},
+    onNavigateBack: () -> Unit,
+    onCreateLobby: () -> Unit,
     viewModel: LobbiesViewModel // On passe le ViewModel en paramètre (c'est plus propre pour l'injection)
 ) {
     var selectedFilter by remember { mutableStateOf("all") }

@@ -1,17 +1,24 @@
 package com.sae.loupgarou.pages.main
 
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sae.loupgarou.data.api.RetrofitClient
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
 import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
+import com.sae.loupgarou.pages.lobbies.LobbiesScreen
 import com.sae.loupgarou.pages.rules.RulePage
 import com.sae.loupgarou.ui.theme.SettingsPage
+import com.sae.loupgarou.viewmodel.LobbiesViewModel
 import kotlinx.serialization.Serializable
+import kotlin.getValue
 
 sealed interface Routes {
     @Serializable
@@ -46,11 +53,15 @@ sealed interface Routes {
 
     @Serializable
     data object HistoryRoute
+
+    @Serializable
+    data object LobbyRoute
 }
 
 @Composable
-fun MainNavHost() {
+fun MainNavHost(viewModel: LobbiesViewModel) {
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = Routes.HomeRoute
@@ -93,11 +104,19 @@ fun MainNavHost() {
             )
         }
 
+        composable<Routes.LobbyRoute> {
+            LobbiesScreen(
+                onNavigateBack = {},
+                onCreateLobby = {},
+                viewModel = viewModel
+            )
+        }
+
         composable<Routes.HomeRoute>{
             HomePage(
                 onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
                 onProfileClick = { navController.navigate(Routes.ProfileRoute) },
-                onPlayClick = { navController.navigate(Routes.PlayRoute) },
+                onPlayClick = { navController.navigate(Routes.LobbyRoute) },
                 onHistoryClick = { navController.navigate(Routes.HistoryRoute) },
                 onRulesClick = { navController.navigate(Routes.RulesRoute) },
                 onCreditsClick = { navController.navigate(Routes.CreditsRoute) }
