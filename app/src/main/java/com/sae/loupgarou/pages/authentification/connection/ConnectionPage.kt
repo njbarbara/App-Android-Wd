@@ -21,6 +21,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,6 +63,12 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        LaunchedEffect(viewModel.isSuccess) {
+            if (viewModel.isSuccess) {
+                onConnection()
+            }
+        }
+
         Image(
             painter = painterResource(id = R.drawable.earth),
             contentDescription = stringResource(R.string.login_background_description),
@@ -135,7 +142,6 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
 
                 Button(
                     onClick = { viewModel.login(pseudo, password)
-                                onConnection()
                               },
                     enabled = !viewModel.isLoading,
                     shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),

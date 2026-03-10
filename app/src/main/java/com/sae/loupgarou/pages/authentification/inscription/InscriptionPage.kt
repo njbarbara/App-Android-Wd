@@ -24,6 +24,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,6 +64,12 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel(),onInscription: ()
     val isEmailError = email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()
     val isPasswordError = password.isNotEmpty() && password.length < 6
     val doPasswordsMatch = confirmPassword.isNotEmpty() && password != confirmPassword
+
+    LaunchedEffect(viewModel.isSuccess) {
+        if (viewModel.isSuccess) {
+            onInscription()
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -148,7 +155,6 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel(),onInscription: ()
             Button(
                 onClick = {
                     viewModel.register(username, email, password)
-                    onInscription()
                 },
                 enabled = !viewModel.isLoading,
                 shape = CutCornerShape(10.dp),
@@ -218,4 +224,3 @@ fun InscriptionPage(viewModel: RegisterViewModel = viewModel(),onInscription: ()
         }
     }
 }
-

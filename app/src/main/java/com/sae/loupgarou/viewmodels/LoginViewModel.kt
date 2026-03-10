@@ -23,7 +23,8 @@ class LoginViewModel @JvmOverloads constructor(
     var isLoading by mutableStateOf(false)
     var loginResult by mutableStateOf<String?>(null)
 
-
+    var isSuccess by mutableStateOf(false)
+        private set
     fun login(login: String, password: String) {
         viewModelScope.launch {
             isLoading = true
@@ -36,13 +37,13 @@ class LoginViewModel @JvmOverloads constructor(
                     if (token != null) {
                         sessionManager.saveToken(token)
                         loginResult = "Succès : Connexion réussie"
+                        isSuccess = true
                     } else {
                         loginResult = "Erreur : Token non reçu"
                     }
                 } else {
-                    val errorBody = response.errorBody()?.string()
                     var errorMessage = "Identifiants incorrects" // Message par défaut
-                    loginResult = "Erreur : ${errorBody ?: errorMessage} - Identifiants incorrects"
+                    loginResult = "Erreur : ${response.code() ?: errorMessage} - Identifiants incorrects"
                 }
             } catch (e: Exception) {
                 loginResult = "Erreur réseau : ${e.localizedMessage}"

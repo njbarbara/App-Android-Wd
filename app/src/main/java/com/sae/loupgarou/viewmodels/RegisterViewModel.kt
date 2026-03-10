@@ -20,11 +20,14 @@ class RegisterViewModel @JvmOverloads constructor(
     private val sessionManager = SessionManager(application)
     var isLoading by mutableStateOf(false)
     var registerResult by mutableStateOf<String?>(null)
+    var isSuccess by mutableStateOf(false)
+        private set
 
     fun register(login: String, email: String, password: String) {
         viewModelScope.launch {
             isLoading = true
             registerResult = null
+            isSuccess = false
             try{
                 val response = apiService.register(RegisterRequest(login, password, email))
                 if (response.isSuccessful) {
@@ -33,6 +36,7 @@ class RegisterViewModel @JvmOverloads constructor(
                     if (token != null) {
                         sessionManager.saveToken(token)
                         registerResult = "Succès : Inscription réussie"
+                        isSuccess = true
                     }
                 }else {
                     registerResult = "Erreur : ${response.code()} -Erreur inconnue - Inscription échouée"
@@ -45,4 +49,3 @@ class RegisterViewModel @JvmOverloads constructor(
         }
     }
 }
-
