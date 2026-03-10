@@ -53,8 +53,7 @@ fun ProfileScreen() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-
-
+        ProfilePicture()
 
         Text(text = stringResource(R.string.profile),
             color = Color.White,

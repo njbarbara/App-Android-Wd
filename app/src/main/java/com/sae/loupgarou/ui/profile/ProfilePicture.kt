@@ -10,11 +10,10 @@ import com.sae.loupgarou.R
 
 @Composable
 
-fun profilePicture(){
+fun ProfilePicture(){
     Image(
-        painter = painterResource(id = ),
+        painter = painterResource(id = R.drawable.profile),
         contentDescription = "Profile",
         contentScale = ContentScale.FillBounds,
-        modifier = Modifier.fillMaxSize()
     )
 }

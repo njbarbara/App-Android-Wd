@@ -11,6 +11,7 @@ import com.sae.loupgarou.pages.credits.CreditsPage
 import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.rules.RulePage
+import com.sae.loupgarou.ui.profile.ProfileScreen
 import com.sae.loupgarou.ui.theme.SettingsPage
 import kotlinx.serialization.Serializable
 
@@ -50,6 +51,7 @@ sealed interface Routes {
 
     @Serializable
     data object GameSelectionRoute
+
 }
 
 @Composable
@@ -103,6 +105,10 @@ fun MainNavHost() {
                 onJoinButtonClick = { /*navController.navigate(Routes.LobbyRoute)*/ },
                 onReturn = { navController.navigate(Routes.HomeRoute) }
             )
+        }
+
+        composable<Routes.ProfileRoute>{
+            ProfileScreen()
         }
 
 
