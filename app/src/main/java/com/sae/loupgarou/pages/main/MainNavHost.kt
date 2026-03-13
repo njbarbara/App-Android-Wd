@@ -69,7 +69,7 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeRoute
+        startDestination = Routes.MainRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -105,7 +105,8 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
 
         composable<Routes.ConnectionRoute> {
             ConnectionPage(
-                onConnection = { navController.navigate(Routes.HomeRoute) }
+                onConnection = { navController.navigate(Routes.HomeRoute) },
+                onReturn = { navController.navigate(Routes.MainRoute) }
             )
         }
 

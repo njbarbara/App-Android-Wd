@@ -22,6 +22,8 @@
     <string name="members1">Anis YOUNES, Cyril BARRALLON,</string>
     <string name="members2">Esteban JACQUES, Najib BARBARA,</string>
     <string name="members3">Neil BONNETOT, Robin Werner</string>
+    <string name="pseudo">Pseudo </string>
+
     <string name="rules">RÈGLES DU JEU</string>
     <string name="chose_right">Choisissez bien et n\'exécutez pas vos concitoyens. Bonne chance !\n</string>
     <string name="welcome">Bienvenue dans Wolves of Democracy ! Vous incarnez un citoyen de notre magnifique démocratie, mais attention, les traîtres rôdent la nuit…\n</string>
@@ -46,9 +48,11 @@
     <string name="volume_sons">Volume Sons</string>
     <string name="volume_musique">Volume Musique</string>
     <string name="mode_clair_sombre">MODE CLAIR/SOMBRE</string>
+
     <string name="main_title">WOLVES OF\nDEMOCRACY</string>
     <string name="main_subtitle">Choisissez votre destinée</string>
     <string name="btn_login">SE CONNECTER</string>
+
     <string name="login_title">IDENTIFICATION</string>
     <string name="login_subtitle">Accès au réseau sécurisé</string>
     <string name="login_email_label">Adresse Email</string>

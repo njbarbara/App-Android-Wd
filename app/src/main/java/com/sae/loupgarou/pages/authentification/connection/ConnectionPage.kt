@@ -11,13 +11,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,9 +36,14 @@ import androidx.compose.ui.res.stringResource // Nouvel import
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel // Import manquant
+import com.sae.loupgarou.viewmodels.LoginViewModel
+import com.sae.loupgarou.pages.Retour
 import com.sae.loupgarou.R
 
 val fontAldrich = FontFamily(
@@ -43,14 +52,20 @@ val fontAldrich = FontFamily(
 
 
 @Composable
-fun ConnectionPage(onConnection: () -> Unit) {
-    var email by remember { mutableStateOf("") }
+fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> Unit, onReturn: () -> Unit) { // Ajout du paramètre ici
+    var pseudo by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        LaunchedEffect(viewModel.isSuccess) {
+            if (viewModel.isSuccess) {
+                onConnection()
+            }
+        }
+
         Image(
             painter = painterResource(id = R.drawable.earth),
             contentDescription = stringResource(R.string.login_background_description),
@@ -61,8 +76,15 @@ fun ConnectionPage(onConnection: () -> Unit) {
         Box(
             modifier = Modifier
                 .padding(24.dp)
-                .border(2.dp, colorResource(R.color.light_blue), CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp))
-                .background(colorResource(R.color.deep_marine).copy(alpha = 0.9f), CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp))
+                .border(
+                    2.dp,
+                    colorResource(R.color.light_blue),
+                    CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp)
+                )
+                .background(
+                    colorResource(R.color.deep_marine).copy(alpha = 0.9f),
+                    CutCornerShape(topStart = 24.dp, bottomEnd = 24.dp)
+                )
                 .padding(32.dp)
         ) {
             Column(
@@ -87,8 +109,8 @@ fun ConnectionPage(onConnection: () -> Unit) {
                 )
 
                 OutlinedTextField(
-                    value = email,
-                    onValueChange = { email = it },
+                    value = pseudo,
+                    onValueChange = { pseudo = it },
                     label = { Text(stringResource(R.string.login_email_label), color = colorResource(R.color.light_blue)) },
                     textStyle = androidx.compose.ui.text.TextStyle(color = Color.White, fontFamily = fontAldrich),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -116,19 +138,37 @@ fun ConnectionPage(onConnection: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { onConnection()},
+                    onClick = { viewModel.login(pseudo, password)
+                              },
+                    enabled = !viewModel.isLoading,
                     shape = CutCornerShape(topStart = 12.dp, bottomEnd = 12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.light_blue)),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp)
                 ) {
+                    if (viewModel.isLoading) {
+                        CircularProgressIndicator(color = Color.White)
+                    } else {
+                        Text(
+                            text = stringResource(R.string.login_button_text),
+                            fontFamily = fontAldrich,
+                            color = colorResource(R.color.deep_blue),
+                            fontSize = 18.sp,
+                            letterSpacing = 1.sp
+                        )
+                    }
+                }
+                Retour(onReturn)
+                viewModel.loginResult?.let { result ->
+                    val textColor = if (result.contains("Succès", ignoreCase = true)) {
+                        Color.Green
+                    } else {
+                        Color.Red
+                    }
                     Text(
-                        text = stringResource(R.string.login_button_text),
-                        fontFamily = fontAldrich,
-                        color = colorResource(R.color.deep_blue),
-                        fontSize = 18.sp,
-                        letterSpacing = 1.sp
+                        text = result,
+                        color = textColor
                     )
                 }
             }
