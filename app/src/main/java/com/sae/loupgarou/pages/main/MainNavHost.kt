@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
@@ -46,6 +47,9 @@ sealed interface Routes {
 
     @Serializable
     data object HistoryRoute
+
+    @Serializable
+    data object GameSelectionRoute
 }
 
 @Composable
@@ -94,11 +98,20 @@ fun MainNavHost() {
             )
         }
 
+        composable<Routes.GameSelectionRoute>{
+            GameSelectionPage(
+                onCreateButtonClick = { navController.navigate(Routes.CreationRoute) },
+                onJoinButtonClick = { /*navController.navigate(Routes.LobbyRoute)*/ },
+                onReturn = { navController.navigate(Routes.HomeRoute) }
+            )
+        }
+
+
         composable<Routes.HomeRoute>{
             HomePage(
                 onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
                 onProfileClick = { navController.navigate(Routes.ProfileRoute) },
-                onPlayClick = { navController.navigate(Routes.PlayRoute) },
+                onPlayClick = { navController.navigate(Routes.GameSelectionRoute) },
                 onHistoryClick = { navController.navigate(Routes.HistoryRoute) },
                 onRulesClick = { navController.navigate(Routes.RulesRoute) },
                 onCreditsClick = { navController.navigate(Routes.CreditsRoute) }
