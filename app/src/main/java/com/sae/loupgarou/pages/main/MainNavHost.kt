@@ -112,10 +112,20 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
         composable<Routes.GameSelectionRoute>{
             GameSelectionPage(
                 onCreateButtonClick = { navController.navigate(Routes.CreationRoute) },
-                onJoinButtonClick = { /*navController.navigate(Routes.LobbyRoute)*/ },
+                onJoinButtonClick = { navController.navigate(Routes.LobbyRoute) },
                 onReturn = { navController.navigate(Routes.HomeRoute) }
             )
         }
+
+        composable<Routes.LobbyRoute>{
+            LobbiesScreen(
+                onNavigateBack = {},
+                onCreateLobby = { navController.navigate(Routes.CreationRoute) },
+                onLobbyClick = {},
+                viewModel = viewModel
+            )
+        }
+
 
 
         composable<Routes.HomeRoute>{
