@@ -18,9 +18,13 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,15 +38,24 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sae.loupgarou.R
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.pages.authentification.inscription.AuthTextField
+import com.sae.loupgarou.viewmodels.LoginViewModel
+import com.sae.loupgarou.viewmodels.RegisterViewModel
+
+val fontAldrich = FontFamily(
+    Font(R.font.aldrich_regular, FontWeight.Normal)
+)
 
 @Composable
-fun InscriptionPage(onInscription: () -> Unit,
-                    onConnection: () -> Unit
-) {
+fun InscriptionPage(viewModel: RegisterViewModel = viewModel(),onInscription: () -> Unit,
+                    onConnection: () -> Unit) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -51,6 +64,12 @@ fun InscriptionPage(onInscription: () -> Unit,
     val isEmailError = email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()
     val isPasswordError = password.isNotEmpty() && password.length < 6
     val doPasswordsMatch = confirmPassword.isNotEmpty() && password != confirmPassword
+
+    LaunchedEffect(viewModel.isSuccess) {
+        if (viewModel.isSuccess) {
+            onInscription()
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -134,18 +153,36 @@ fun InscriptionPage(onInscription: () -> Unit,
 
 
             Button(
-                onClick = { onInscription() },
+                onClick = {
+                    viewModel.register(username, email, password)
+                },
+                enabled = !viewModel.isLoading,
                 shape = CutCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.light_blue))
             ) {
+                if (viewModel.isLoading) {
+                    CircularProgressIndicator(color = Color.White)
+                } else {
+                    Text(
+                        text = stringResource(id = R.string.btn_register),
+                        fontFamily = fontAldrich,
+                        color = colorResource(id = R.color.deep_blue),
+                        modifier = Modifier.padding(vertical = 10.dp)
+                    )
+                }
+            }
+            viewModel.registerResult?.let { result ->
+                val textColor = if (result.contains("Succès", ignoreCase = true)) {
+                    Color.Green
+                } else {
+                    Color.Red
+                }
                 Text(
-                    text = stringResource(id = R.string.btn_register),
-                    fontFamily = fontAldrich,
-                    color = colorResource(id = R.color.deep_blue),
-                    modifier = Modifier.padding(vertical = 10.dp)
+                    text = result,
+                    color = textColor
                 )
             }
 
@@ -187,4 +224,3 @@ fun InscriptionPage(onInscription: () -> Unit,
         }
     }
 }
-

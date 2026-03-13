@@ -93,7 +93,8 @@ fun MainNavHost() {
 
         composable<Routes.ConnectionRoute> {
             ConnectionPage(
-                onConnection = { navController.navigate(Routes.HomeRoute) }
+                onConnection = { navController.navigate(Routes.HomeRoute) },
+                onReturn = { navController.navigate(Routes.MainRoute) }
             )
         }
 
