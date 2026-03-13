@@ -36,7 +36,8 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.pages.settings.VolumeSlider
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.ui.theme.fontAldrich
+
 
 @Composable
 fun SettingsPage() {

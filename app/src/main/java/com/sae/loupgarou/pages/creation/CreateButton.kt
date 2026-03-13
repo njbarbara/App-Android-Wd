@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.R.string
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.ui.theme.fontAldrich
 
 @Composable
 fun CreateButton(){

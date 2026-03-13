@@ -1,5 +1,6 @@
 package com.sae.loupgarou.pages.GameSelection
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,9 +49,9 @@ import com.sae.loupgarou.pages.home.StartButton
 
 
 @Composable
-fun GameSelectionPage(onCreateButtonClick: () -> Unit = {},
-                      onJoinButtonClick: () -> Unit = {},
-                      onReturn: () -> Unit = {}) {
+fun GameSelectionPage(onCreateButtonClick: () -> Unit,
+                      onJoinButtonClick: () -> Unit,
+                      onReturn: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         // Image de fond
@@ -64,7 +65,6 @@ fun GameSelectionPage(onCreateButtonClick: () -> Unit = {},
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                //.background(color = colorResource(id = color.marine))
                 .padding(10.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -111,7 +111,9 @@ fun CreateButton(onClick: () -> Unit) {
 @Composable
 fun JoinButton(onClick: () -> Unit) {
     OutlinedButton(
-        onClick = { onClick() },
+        onClick = {
+            Log.d("GameSelectionPage", "Join button clicked")
+            onClick() },
         shape = CutCornerShape(10.dp, 0.dp, 10.dp, 0.dp),
         modifier = Modifier
             .fillMaxWidth()

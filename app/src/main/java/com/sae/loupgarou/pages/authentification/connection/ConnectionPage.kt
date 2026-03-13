@@ -32,24 +32,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.res.stringResource // Nouvel import
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel // Import manquant
-
-import com.sae.loupgarou.R
 import com.sae.loupgarou.viewmodels.LoginViewModel
 import com.sae.loupgarou.pages.Retour
+import com.sae.loupgarou.R
 
-
-
-
-val AldrichFont = FontFamily(
+val fontAldrich = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
 )
 
@@ -97,7 +94,7 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
             ) {
                 Text(
                     text = stringResource(R.string.login_title),
-                    fontFamily = AldrichFont,
+                    fontFamily = fontAldrich,
                     color = Color.White,
                     fontSize = 32.sp,
                     letterSpacing = 2.sp
@@ -105,7 +102,7 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
 
                 Text(
                     text = stringResource(R.string.login_subtitle),
-                    fontFamily = AldrichFont,
+                    fontFamily = fontAldrich,
                     color = colorResource(R.color.light_blue),
                     fontSize = 14.sp,
                     modifier = Modifier.padding(bottom = 16.dp)
@@ -114,8 +111,8 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
                 OutlinedTextField(
                     value = pseudo,
                     onValueChange = { pseudo = it },
-                    label = { Text(stringResource(R.string.pseudo), color = colorResource(R.color.light_blue)) },
-                    textStyle = TextStyle(color = Color.White, fontFamily = AldrichFont),
+                    label = { Text(stringResource(R.string.login_email_label), color = colorResource(R.color.light_blue)) },
+                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White, fontFamily = fontAldrich),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = colorResource(R.color.light_blue),
                         unfocusedBorderColor = colorResource(R.color.light_blue).copy(alpha = 0.5f),
@@ -129,7 +126,7 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
                     onValueChange = { password = it },
                     label = { Text(stringResource(R.string.login_password_label), color = colorResource(R.color.light_blue)) },
                     visualTransformation = PasswordVisualTransformation(),
-                    textStyle = TextStyle(color = Color.White, fontFamily = AldrichFont),
+                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White, fontFamily = fontAldrich),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = colorResource(R.color.light_blue),
                         unfocusedBorderColor = colorResource(R.color.light_blue).copy(alpha = 0.5f),
@@ -155,7 +152,7 @@ fun ConnectionPage(viewModel: LoginViewModel = viewModel(),onConnection: () -> U
                     } else {
                         Text(
                             text = stringResource(R.string.login_button_text),
-                            fontFamily = AldrichFont,
+                            fontFamily = fontAldrich,
                             color = colorResource(R.color.deep_blue),
                             fontSize = 18.sp,
                             letterSpacing = 1.sp
