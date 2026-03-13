@@ -10,7 +10,7 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.12.3"
 composeBom = "2024.09.00"
 retrofit = "3.0.0"
-datastore = "1.1.2"
+datastore = "1.2.1"
 navigationCompose = "2.9.7"
 serialization = "1.10.0"
 

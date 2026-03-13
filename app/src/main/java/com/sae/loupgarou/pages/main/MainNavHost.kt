@@ -1,6 +1,7 @@
 package com.sae.loupgarou.pages.main
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -8,6 +9,7 @@ import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
+import com.sae.loupgarou.pages.historique.HistoriquePage
 import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.rules.RulePage
@@ -106,6 +108,9 @@ fun MainNavHost() {
             )
         }
 
+        composable<Routes.HistoryRoute>{
+            HistoriquePage()
+        }
 
         composable<Routes.HomeRoute>{
             HomePage(
@@ -118,4 +123,5 @@ fun MainNavHost() {
             )
         }
     }
+
 }

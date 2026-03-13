@@ -1,4 +1,9 @@
 <resources>
+    <string name="profile">Profile</string>
+    <string name="pendant">pendant</string>
+    <string name="nuits">nuits</string>
+    <string name="nuit">nuit</string>
+
     <string name="app_name">SAE LoupGarou</string>
     <string name="return_button">RETOUR À L\'ACCEUIL</string>
     <string name="inscription">INSCRIPTION</string>
