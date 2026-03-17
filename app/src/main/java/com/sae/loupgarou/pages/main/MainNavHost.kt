@@ -1,7 +1,6 @@
 package com.sae.loupgarou.pages.main
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -59,7 +58,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.MainRoute
+        startDestination = Routes.HomeRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -111,8 +110,8 @@ fun MainNavHost() {
         composable<Routes.HistoryRoute>{
             HistoriquePage()
         }
-
         composable<Routes.HomeRoute>{
+
             HomePage(
                 onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
                 onProfileClick = { navController.navigate(Routes.ProfileRoute) },
@@ -123,5 +122,4 @@ fun MainNavHost() {
             )
         }
     }
-
 }

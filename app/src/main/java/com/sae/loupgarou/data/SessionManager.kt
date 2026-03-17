@@ -32,7 +32,7 @@ class SessionManager(private val context: Context) {
         return userToken.first()
     }
 
-    suspend fun clearSession() {
+    suspend fun clearToken() {
         context.dataStore.edit { preferences ->
             preferences.remove(USER_TOKEN)
         }

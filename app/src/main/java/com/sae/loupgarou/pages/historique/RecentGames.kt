@@ -67,7 +67,7 @@ fun RecentGames(){
 
         }
         item{
-/*            GameTemplate(
+            /*GameTemplate(
                 Date(2026,18,17),
                 gameResult = "Victoire",
                 nightsCount = 3

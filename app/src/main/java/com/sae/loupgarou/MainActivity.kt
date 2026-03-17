@@ -11,6 +11,7 @@ import com.sae.loupgarou.R.font
 import com.sae.loupgarou.pages.historique.HistoriquePage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.main.MainNavHost
+import com.sae.loupgarou.pages.main.MainPage
 
 
 val fontAldrich = FontFamily(
@@ -24,8 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SAELoupGarouTheme {
-                //MainNavHost()
-                HistoriquePage()
+                MainNavHost()
+
             }
         }
     }
