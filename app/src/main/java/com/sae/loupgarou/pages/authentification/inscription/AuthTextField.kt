@@ -1,4 +1,4 @@
-package com.sae.loupgarou.pages.inscription
+package com.sae.loupgarou.pages.authentification.inscription
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +15,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation.Companion.None
 import androidx.compose.ui.unit.dp
 import com.sae.loupgarou.R
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.ui.theme.fontAldrich
+
 
 @Composable
 fun AuthTextField(

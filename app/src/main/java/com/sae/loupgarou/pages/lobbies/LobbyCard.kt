@@ -27,7 +27,7 @@ import com.sae.loupgarou.model.Lobby
 import com.sae.loupgarou.fontAldrich
 
 @Composable
-fun LobbyCard(lobby: Lobby) {
+fun LobbyCard(lobby: Lobby, onClick: () -> Unit) {
     val statusColor = when {
         lobby.isEnded || lobby.phase == "ended" -> Color.Gray
         lobby.phase == "lobby" -> colorResource(id = color.Cyan400)
@@ -39,7 +39,7 @@ fun LobbyCard(lobby: Lobby) {
         modifier = Modifier
             .background(colorResource(id = color.Slate900).copy(alpha = 0.9f), CutCornerShape(topStart = 16.dp, bottomEnd = 16.dp))
             .border(1.dp, statusColor.copy(alpha = 0.5f), CutCornerShape(topStart = 16.dp, bottomEnd = 16.dp))
-            .clickable { /* TODO: Naviguer vers les détails du salon */ }
+            .clickable { onClick() }
             .padding(16.dp)
     ) {
         Column {

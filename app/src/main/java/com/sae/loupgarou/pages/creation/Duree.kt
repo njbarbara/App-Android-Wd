@@ -12,9 +12,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.string
-import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.ui.theme.fontAldrich
+
 
 @Composable
 fun Duree(){
