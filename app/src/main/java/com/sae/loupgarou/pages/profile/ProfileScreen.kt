@@ -62,6 +62,8 @@ fun ProfileScreen() {
                 shadow = Shadow(color = colorResource(id = color.teal_700), blurRadius = 60f)
             ),
             )
+
+
         GameTemplate(
             Date(2026, 18, 17),
             gameResult = "Victoire",
