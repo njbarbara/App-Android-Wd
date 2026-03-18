@@ -58,7 +58,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeRoute
+        startDestination = Routes.HistoryRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(

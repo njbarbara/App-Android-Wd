@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R.color
-import com.sae.loupgarou.model.Lobby
+import com.sae.loupgarou.models.Lobby
 import com.sae.loupgarou.fontAldrich
 
 @Composable

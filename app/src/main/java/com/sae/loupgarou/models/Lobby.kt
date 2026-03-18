@@ -1,4 +1,4 @@
-package com.sae.loupgarou.model
+package com.sae.loupgarou.models
 
 /*
 //Problème de sérialization, classe pas compatible avec le JSON API

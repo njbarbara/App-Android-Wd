@@ -34,7 +34,7 @@ class RegisterViewModel @JvmOverloads constructor(
                     val body = response.body()
                     val token = body?.token
                     if (token != null) {
-                        sessionManager.saveToken(token)
+                        sessionManager.saveSession(token, login)
                         registerResult = "Succès : Inscription réussie"
                         isSuccess = true
                     }

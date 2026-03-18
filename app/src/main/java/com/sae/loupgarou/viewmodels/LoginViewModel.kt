@@ -35,7 +35,7 @@ class LoginViewModel @JvmOverloads constructor(
                     val body = response.body()
                     val token = body?.token
                     if (token != null) {
-                        sessionManager.saveToken(token)
+                        sessionManager.saveSession(token, login)
                         loginResult = "Succès : Connexion réussie"
                         isSuccess = true
                     } else {
