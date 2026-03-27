@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 // On injecte le service Retrofit dans le ViewModel
-                return LobbiesViewModel(RetrofitClient.apiService) as T            }
+                return LobbiesViewModel(RetrofitClient.apiService) as T
+            }
         }
     }
 
