@@ -12,7 +12,6 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script:
-    - chmod +x ./gradlew
     - ./gradlew sonar
   allow_failure: true
   only:
