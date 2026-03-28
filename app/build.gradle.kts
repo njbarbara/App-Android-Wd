@@ -18,13 +18,24 @@ val coverageExclusions = listOf(
     "**/BuildConfig.*",
     "**/Manifest*.*",
     "**/*Test*.*",
-    "android/**/*.*"
+    "android/**/*.*",
+    "com/sae/loupgarou/pages/**",
+    "com/sae/loupgarou/ui/theme/**",
+    "com/sae/loupgarou/MainActivity*.*",
+    "com/sae/loupgarou/Fonts*.*"
 )
 
 val unitTestCoverageReportPath =
     layout.buildDirectory.file(
         "reports/jacoco/jacocoDebugUnitTestReport/jacocoDebugUnitTestReport.xml"
     )
+
+val sonarCoverageExclusions = listOf(
+    "**/pages/**/*",
+    "**/ui/theme/**/*",
+    "**/MainActivity.kt",
+    "**/Fonts.kt"
+)
 
 jacoco {
     toolVersion = "0.8.12"
@@ -171,6 +182,10 @@ sonar {
         property(
             "sonar.junit.reportPaths",
             layout.buildDirectory.dir("test-results/testDebugUnitTest").get().asFile.absolutePath
+        )
+        property(
+            "sonar.coverage.exclusions",
+            sonarCoverageExclusions.joinToString(",")
         )
     }
 }
