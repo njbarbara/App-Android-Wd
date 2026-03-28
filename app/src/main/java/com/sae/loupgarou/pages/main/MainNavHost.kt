@@ -74,7 +74,7 @@ fun MainNavHost() {
         }
 
         composable<Routes.SettingsRoute> {
-            SettingsPage()
+            SettingsPage(onReturn = { navController.navigate(Routes.HomeRoute) })
         }
 
         composable<Routes.InscriptionRoute> {
