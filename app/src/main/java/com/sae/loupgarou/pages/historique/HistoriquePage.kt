@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -19,12 +22,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
-import java.util.Date
+import com.sae.loupgarou.pages.Retour
+import com.sae.loupgarou.viewmodels.HistoriqueViewModel
 
 @Composable
-fun HistoriquePage(){
+fun HistoriquePage(viewModel: HistoriqueViewModel = viewModel(), onReturn: () -> Unit) {
+    LaunchedEffect(Unit) {
+        viewModel.fetchGames()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -56,15 +65,15 @@ fun HistoriquePage(){
                 .padding(vertical = 40.dp, horizontal = 25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
-        ){
-            GameTemplate(
-                Date(2026, 18, 17),
-                gameResult = "Victoire",
-                nightsCount = 3
-            )
-            RecentGames()
-
+        ) {
+            if (viewModel.isLoading) {
+                CircularProgressIndicator(color = Color.White)
+            } else if (viewModel.errorMessage != null) {
+                Text(text = viewModel.errorMessage!!, color = Color.Red)
+            } else {
+                RecentGames(games = viewModel.games)
+            }
+            Retour(onReturn)
         }
-
     }
 }

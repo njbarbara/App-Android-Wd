@@ -8,13 +8,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sae.loupgarou.data.SessionManager
 import com.sae.loupgarou.models.RegisterRequest
-import com.sae.loupgarou.services.AuthApiService
+import com.sae.loupgarou.services.ApiServices
 import com.sae.loupgarou.services.RetrofitClient
 import kotlinx.coroutines.launch
 
 class RegisterViewModel @JvmOverloads constructor(
     application: Application,
-    private val apiService: AuthApiService = RetrofitClient.authApiService
+    private val apiService: ApiServices = RetrofitClient.apiServices
 ) : AndroidViewModel(application) {
 
     private val sessionManager = SessionManager(application)

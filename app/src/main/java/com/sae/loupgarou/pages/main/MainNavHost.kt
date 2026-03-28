@@ -58,7 +58,7 @@ fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Routes.HistoryRoute
+        startDestination = Routes.MainRoute
     ){
         composable<Routes.MainRoute> {
             MainPage(
@@ -108,7 +108,7 @@ fun MainNavHost() {
         }
 
         composable<Routes.HistoryRoute>{
-            HistoriquePage()
+            HistoriquePage( onReturn = { navController.navigate(Routes.HomeRoute) } )
         }
         composable<Routes.HomeRoute>{
 
