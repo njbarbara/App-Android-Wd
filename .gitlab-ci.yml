@@ -1,13 +1,6 @@
 stages:
   - 🧪tests
 
-include:
-  - project: 'iut_inf63/generic-ci' # Reference to the gitlab project containing the generic ci scripts
-    ref: 'main' # Reference to the gitlab ci generic project branch
-    file:
-      - 'build/.docker-build.yml' # Name of the file to include 
-      - 'deploy/.docker-deploy.yml' # Name of the file to include 
-
 sonarqube-check:
   stage: 🧪tests
   image: gradle:jre11-slim
