@@ -62,7 +62,7 @@ fun SettingsButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
 }
 
 @Composable
-fun ProfileButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun ProfileButton(modifier: Modifier = Modifier, onProfileClick: () -> Unit) {
     Box(
         modifier = modifier
             .padding(end = 16.dp, top = 52.dp) // même top que Settings
@@ -71,7 +71,7 @@ fun ProfileButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
             //.background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
             //.background(Color.White.copy(alpha = 0.7f))
 
-        .clickable { onClick() },
+        .clickable { onProfileClick() },
         contentAlignment = Alignment.Center
     ) {
         Image(
