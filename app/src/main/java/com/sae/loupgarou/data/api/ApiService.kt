@@ -1,7 +1,7 @@
-package com.example.example_project.data.api
+package com.sae.loupgarou.data.api
 
 // data/api/ApiService.kt
-import com.sae.loupgarou.model.Lobby
+import com.sae.loupgarou.models.Lobby
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

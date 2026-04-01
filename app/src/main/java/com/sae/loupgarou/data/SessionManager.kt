@@ -16,15 +16,21 @@ class SessionManager(private val context: Context) {
 
     companion object {
         private val USER_TOKEN = stringPreferencesKey("user_token")
+        private val USER_LOGIN = stringPreferencesKey("user_login")
     }
 
     val userToken: Flow<String?> = context.dataStore.data.map { preferences ->
         preferences[USER_TOKEN]
     }
 
-    suspend fun saveToken(token: String) {
+    val userLogin: Flow<String?> = context.dataStore.data.map { preferences ->
+        preferences[USER_LOGIN]
+    }
+
+    suspend fun saveSession(token: String, login: String) {
         context.dataStore.edit { preferences ->
             preferences[USER_TOKEN] = token
+            preferences[USER_LOGIN] = login
         }
     }
 
@@ -32,9 +38,14 @@ class SessionManager(private val context: Context) {
         return userToken.first()
     }
 
+    suspend fun getLogin(): String? {
+        return userLogin.first()
+    }
+
     suspend fun clearSession() {
         context.dataStore.edit { preferences ->
             preferences.remove(USER_TOKEN)
+            preferences.remove(USER_LOGIN)
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.sae.loupgarou.data.api
 
-import com.example.example_project.data.api.ApiService
+import com.sae.loupgarou.data.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

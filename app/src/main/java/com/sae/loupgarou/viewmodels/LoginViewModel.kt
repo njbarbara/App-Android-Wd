@@ -8,14 +8,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sae.loupgarou.data.SessionManager
 import com.sae.loupgarou.models.LoginRequest
-import com.sae.loupgarou.models.RegisterRequest
-import com.sae.loupgarou.services.AuthApiService
+import com.sae.loupgarou.services.ApiServices
 import com.sae.loupgarou.services.RetrofitClient
 import kotlinx.coroutines.launch
 
 class LoginViewModel @JvmOverloads constructor(
     application: Application,
-    private val apiService: AuthApiService = RetrofitClient.authApiService
+    private val apiService: ApiServices = RetrofitClient.apiServices
 ) : AndroidViewModel(application) {
     
     private val sessionManager = SessionManager(application)
@@ -35,7 +34,7 @@ class LoginViewModel @JvmOverloads constructor(
                     val body = response.body()
                     val token = body?.token
                     if (token != null) {
-                        sessionManager.saveToken(token)
+                        sessionManager.saveSession(token, login)
                         loginResult = "Succès : Connexion réussie"
                         isSuccess = true
                     } else {

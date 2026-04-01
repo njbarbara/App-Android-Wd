@@ -36,11 +36,12 @@ import androidx.compose.ui.unit.sp
 import com.sae.loupgarou.R
 import com.sae.loupgarou.R.color
 import com.sae.loupgarou.pages.settings.VolumeSlider
-import com.sae.loupgarou.ui.theme.fontAldrich
+import com.sae.loupgarou.fontAldrich
+import com.sae.loupgarou.pages.Retour
 
 
 @Composable
-fun SettingsPage() {
+fun SettingsPage(onReturn: () -> Unit) {
     var generalVolume by remember { mutableFloatStateOf(0.7f) }
     var soundVolume by remember { mutableFloatStateOf(0.5f) }
     var musicVolume by remember { mutableFloatStateOf(0.6f) }
@@ -158,6 +159,7 @@ fun SettingsPage() {
                 VolumeSlider(label = stringResource(R.string.volume_sons), value = soundVolume, onValueChange = { soundVolume = it })
                 VolumeSlider(label = stringResource(R.string.volume_musique), value = musicVolume, onValueChange = { musicVolume = it })
             }
+            Retour(onReturn)
         }
     }
 }

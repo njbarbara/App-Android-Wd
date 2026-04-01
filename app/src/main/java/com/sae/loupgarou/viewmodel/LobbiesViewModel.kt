@@ -4,15 +4,15 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.example_project.data.api.ApiService
-import com.sae.loupgarou.model.Lobby
+import com.sae.loupgarou.data.api.ApiService
+import com.sae.loupgarou.models.Lobby
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.sae.loupgarou.model.PlayerInfo
+import com.sae.loupgarou.models.PlayerInfo
 
 class LobbiesViewModel(
     private val api: ApiService // C'est la qu'on instancie le service API

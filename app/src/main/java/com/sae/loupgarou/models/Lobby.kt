@@ -1,3 +1,5 @@
+
+
 /*
 //Problème de sérialization, classe pas compatible avec le JSON API
 package com.sae.loupgarou.model
@@ -15,7 +17,7 @@ data class Lobby(
 )
 */
 
-package com.sae.loupgarou.model
+package com.sae.loupgarou.models
 
 import kotlinx.serialization.Serializable
 
