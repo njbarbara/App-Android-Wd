@@ -39,6 +39,7 @@ import com.sae.loupgarou.pages.settings.VolumeSlider
 import com.sae.loupgarou.fontAldrich
 import com.sae.loupgarou.pages.Retour
 
+
 @Composable
 fun SettingsPage(onReturn: () -> Unit) {
     var generalVolume by remember { mutableFloatStateOf(0.7f) }

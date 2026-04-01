@@ -27,7 +27,7 @@ import com.sae.loupgarou.models.Lobby
 import com.sae.loupgarou.fontAldrich
 
 @Composable
-fun LobbiesContent(filteredLobbies: List<Lobby>) {
+fun LobbiesContent(filteredLobbies: List<Lobby>, onLobbyClick: () -> Unit) {
     if (filteredLobbies.isEmpty()) {
         Box(
             modifier = Modifier
@@ -53,7 +53,7 @@ fun LobbiesContent(filteredLobbies: List<Lobby>) {
         ) {
             // On utilise "items" correctement avec la data class Lobby
             items(filteredLobbies) { lobby ->
-                LobbyCard(lobby)
+                LobbyCard(lobby, onLobbyClick)
             }
         }
     }

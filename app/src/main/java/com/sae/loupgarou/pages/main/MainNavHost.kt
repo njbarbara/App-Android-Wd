@@ -1,9 +1,14 @@
 package com.sae.loupgarou.pages.main
 
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sae.loupgarou.data.api.RetrofitClient
 import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
@@ -11,9 +16,12 @@ import com.sae.loupgarou.pages.credits.CreditsPage
 import com.sae.loupgarou.pages.historique.HistoriquePage
 import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
+import com.sae.loupgarou.pages.lobbies.LobbiesScreen
 import com.sae.loupgarou.pages.rules.RulePage
 import com.sae.loupgarou.ui.theme.SettingsPage
+import com.sae.loupgarou.viewmodel.LobbiesViewModel
 import kotlinx.serialization.Serializable
+import kotlin.getValue
 
 sealed interface Routes {
     @Serializable
@@ -51,11 +59,15 @@ sealed interface Routes {
 
     @Serializable
     data object GameSelectionRoute
+
+    @Serializable
+    data object LobbyRoute
 }
 
 @Composable
-fun MainNavHost() {
+fun MainNavHost(viewModel: LobbiesViewModel) {
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = Routes.MainRoute
@@ -102,7 +114,7 @@ fun MainNavHost() {
         composable<Routes.GameSelectionRoute>{
             GameSelectionPage(
                 onCreateButtonClick = { navController.navigate(Routes.CreationRoute) },
-                onJoinButtonClick = { /*navController.navigate(Routes.LobbyRoute)*/ },
+                onJoinButtonClick = { navController.navigate(Routes.LobbyRoute) },
                 onReturn = { navController.navigate(Routes.HomeRoute) }
             )
         }
@@ -110,6 +122,18 @@ fun MainNavHost() {
         composable<Routes.HistoryRoute>{
             HistoriquePage( onReturn = { navController.navigate(Routes.HomeRoute) } )
         }
+        composable<Routes.LobbyRoute>{
+            LobbiesScreen(
+                onNavigateBack = {},
+                onCreateLobby = { navController.navigate(Routes.CreationRoute) },
+                onLobbyClick = {},
+                viewModel = viewModel,
+                onReturn = { navController.navigate(Routes.HomeRoute) }
+            )
+        }
+
+
+
         composable<Routes.HomeRoute>{
 
             HomePage(

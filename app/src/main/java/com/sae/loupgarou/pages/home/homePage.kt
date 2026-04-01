@@ -48,7 +48,7 @@ fun SettingsButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
             .size(48.dp)
             .clip(CircleShape)
             //.background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
-            .background(Color.White.copy(alpha = 0.7f))
+            //.background(Color.White.copy(alpha = 0.7f))
 
         .clickable(onClick = { onClick() }),
         contentAlignment = Alignment.Center
@@ -56,7 +56,7 @@ fun SettingsButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
         Image(
             painter = painterResource(id = R.drawable.metal_gear2),
             contentDescription = "Settings",
-            modifier = Modifier.fillMaxSize(0.6f)
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
@@ -69,7 +69,7 @@ fun ProfileButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
             .size(48.dp)
             .clip(CircleShape)
             //.background(color = colorResource(id = color.deep_marine), shape = RectangleShape)
-            .background(Color.White.copy(alpha = 0.7f))
+            //.background(Color.White.copy(alpha = 0.7f))
 
         .clickable { onClick() },
         contentAlignment = Alignment.Center
