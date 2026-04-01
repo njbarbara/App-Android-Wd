@@ -8,6 +8,8 @@ import androidx.activity.viewModels
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import com.sae.loupgarou.R.font
+import com.sae.loupgarou.pages.historique.HistoriquePage
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sae.loupgarou.data.api.RetrofitClient
@@ -20,12 +22,15 @@ import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.ui.theme.SAELoupGarouTheme
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
 import com.sae.loupgarou.pages.main.MainNavHost
+import com.sae.loupgarou.pages.main.MainPage
+
 import com.sae.loupgarou.pages.rules.Rules
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
 
 val fontAldrich = FontFamily(
     Font(R.font.aldrich_regular, FontWeight.Normal)
 )
+
 
 class MainActivity : ComponentActivity() {
 
@@ -35,7 +40,8 @@ class MainActivity : ComponentActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 // On injecte le service Retrofit dans le ViewModel
-                return LobbiesViewModel(RetrofitClient.apiService) as T            }
+                return LobbiesViewModel(RetrofitClient.apiService) as T
+            }
         }
     }
 

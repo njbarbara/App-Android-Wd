@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.Test
+import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
+import org.gradle.testing.jacoco.tasks.JacocoReport
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,6 +8,37 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlinx.serialize)
+    alias(libs.plugins.sonar)
+    jacoco
+}
+
+val coverageExclusions = listOf(
+    "**/R.class",
+    "**/R$*.class",
+    "**/BuildConfig.*",
+    "**/Manifest*.*",
+    "**/*Test*.*",
+    "android/**/*.*",
+    "com/sae/loupgarou/pages/**",
+    "com/sae/loupgarou/ui/theme/**",
+    "com/sae/loupgarou/MainActivity*.*",
+    "com/sae/loupgarou/Fonts*.*"
+)
+
+val unitTestCoverageReportPath =
+    layout.buildDirectory.file(
+        "reports/jacoco/jacocoDebugUnitTestReport/jacocoDebugUnitTestReport.xml"
+    )
+
+val sonarCoverageExclusions = listOf(
+    "**/pages/**/*",
+    "**/ui/theme/**/*",
+    "**/MainActivity.kt",
+    "**/Fonts.kt"
+)
+
+jacoco {
+    toolVersion = "0.8.12"
 }
 
 android {
@@ -44,6 +78,62 @@ android {
     buildFeatures {
         compose = true
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
+    }
+}
+
+tasks.withType<Test>().configureEach {
+    extensions.configure(JacocoTaskExtension::class) {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
+    }
+}
+
+tasks.register<JacocoReport>("jacocoDebugUnitTestReport") {
+    dependsOn("testDebugUnitTest")
+
+    reports {
+        xml.required.set(true)
+        xml.outputLocation.set(unitTestCoverageReportPath)
+        html.required.set(true)
+        csv.required.set(false)
+    }
+
+    sourceDirectories.setFrom(
+        files(
+            "src/main/java",
+            "src/main/kotlin"
+        )
+    )
+
+    classDirectories.setFrom(
+        files(
+            fileTree("${layout.buildDirectory.get().asFile}/tmp/kotlin-classes/debug") {
+                exclude(coverageExclusions)
+            },
+            fileTree("${layout.buildDirectory.get().asFile}/intermediates/javac/debug/compileDebugJavaWithJavac/classes") {
+                exclude(coverageExclusions)
+            },
+            fileTree("${layout.buildDirectory.get().asFile}/intermediates/javac/debug/classes") {
+                exclude(coverageExclusions)
+            }
+        )
+    )
+
+    executionData.setFrom(
+        fileTree(layout.buildDirectory.get().asFile) {
+            include("jacoco/testDebugUnitTest.exec")
+            include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
+        }
+    )
+}
+
+tasks.matching { it.name == "sonar" }.configureEach {
+    dependsOn("testDebugUnitTest", "jacocoDebugUnitTestReport")
 }
 
 dependencies {
@@ -63,6 +153,9 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -80,4 +173,23 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "android-sae")
+        property("sonar.qualitygate.wait", true)
+        property(
+            "sonar.coverage.jacoco.xmlReportPaths",
+            unitTestCoverageReportPath.get().asFile.absolutePath
+        )
+        property(
+            "sonar.junit.reportPaths",
+            layout.buildDirectory.dir("test-results/testDebugUnitTest").get().asFile.absolutePath
+        )
+        property(
+            "sonar.coverage.exclusions",
+            sonarCoverageExclusions.joinToString(",")
+        )
+    }
 }

@@ -13,6 +13,7 @@ import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
 import com.sae.loupgarou.pages.creation.CreationPage
 import com.sae.loupgarou.pages.credits.CreditsPage
+import com.sae.loupgarou.pages.historique.HistoriquePage
 import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
@@ -85,7 +86,7 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
         }
 
         composable<Routes.SettingsRoute> {
-            SettingsPage()
+            SettingsPage(onReturn = { navController.navigate(Routes.HomeRoute) })
         }
 
         composable<Routes.InscriptionRoute> {
@@ -118,18 +119,23 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
             )
         }
 
+        composable<Routes.HistoryRoute>{
+            HistoriquePage( onReturn = { navController.navigate(Routes.HomeRoute) } )
+        }
         composable<Routes.LobbyRoute>{
             LobbiesScreen(
                 onNavigateBack = {},
                 onCreateLobby = { navController.navigate(Routes.CreationRoute) },
                 onLobbyClick = {},
-                viewModel = viewModel
+                viewModel = viewModel,
+                onReturn = { navController.navigate(Routes.HomeRoute) }
             )
         }
 
 
 
         composable<Routes.HomeRoute>{
+
             HomePage(
                 onSettingsClick = { navController.navigate(Routes.SettingsRoute) },
                 onProfileClick = { navController.navigate(Routes.ProfileRoute) },
