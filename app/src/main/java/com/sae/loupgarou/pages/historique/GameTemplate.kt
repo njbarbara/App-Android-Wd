@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,9 +23,10 @@ import com.sae.loupgarou.R.string
 
 @Composable
 fun GameTemplate(
-    heureDeCreation: String,
-    gameResult: String,
-    nightCounts: Int
+    gameDate: String,
+    gameResult: String?,
+    rolePlayed: String,
+    nightsCount: Int
 ) {
     Column(
         modifier = Modifier
@@ -49,32 +49,42 @@ fun GameTemplate(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = heureDeCreation,
+                text = gameDate,
                 color = colorResource(R.color.light_blue),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold
             )
             
-            val resultColor = if (gameResult.lowercase() == "victoire") {
-                Color.Green
-            } else if (gameResult.lowercase() == "défaite") {
-                colorResource(R.color.light_red)
-            } else {
-                Color.White
+            val resultText = gameResult ?: "EN COURS"
+            val resultColor = when (resultText.lowercase()) {
+                "victoire", "win" -> Color.Green
+                "défaite", "loss" -> colorResource(R.color.light_red)
+                else -> Color.White
             }
 
             Text(
-                text = gameResult.uppercase(),
+                text = resultText.uppercase(),
                 color = resultColor,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.ExtraBold
             )
         }
 
-        Text(
-            text = "${stringResource(string.pendant)} $nightCounts ${stringResource(string.nuit)}",
-            color = Color.White.copy(alpha = 0.8f),
-            fontSize = 14.sp
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = rolePlayed,
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Text(
+                text = "$nightsCount ${stringResource(string.nuit)}s",
+                color = Color.White.copy(alpha = 0.8f),
+                fontSize = 14.sp
+            )
+        }
     }
 }

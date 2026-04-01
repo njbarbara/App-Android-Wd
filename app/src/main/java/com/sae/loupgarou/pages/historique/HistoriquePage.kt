@@ -71,7 +71,7 @@ fun HistoriquePage(viewModel: HistoriqueViewModel = viewModel(), onReturn: () ->
             } else if (viewModel.errorMessage != null) {
                 Text(text = viewModel.errorMessage!!, color = Color.Red)
             } else {
-                RecentGames(games = viewModel.games)
+                RecentGames(games = viewModel.previousGames)
             }
             Retour(onReturn)
         }

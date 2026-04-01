@@ -7,14 +7,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.sae.loupgarou.data.SessionManager
-import com.sae.loupgarou.models.Game
+import com.sae.loupgarou.models.PreviousGame
 import com.sae.loupgarou.services.RetrofitClient
 import kotlinx.coroutines.launch
 
 class HistoriqueViewModel(application: Application) : AndroidViewModel(application) {
     private val sessionManager = SessionManager(application)
 
-    var games by mutableStateOf<List<Game>>(emptyList())
+    var previousGames by mutableStateOf<List<PreviousGame>>(emptyList())
         private set
 
     var isLoading by mutableStateOf(false)
@@ -28,19 +28,36 @@ class HistoriqueViewModel(application: Application) : AndroidViewModel(applicati
             isLoading = true
             errorMessage = null
             try {
-                val login = sessionManager.getLogin()
-                if (login != null) {
-                    // On filtre les stubs pour ne garder que les parties où l'utilisateur est présent
-                    games = Game.stubs.filter { game ->
-                        game.players.any { it.username == login }
-                    }
-                    
-                    if (games.isEmpty()) {
-                        errorMessage = "Aucune partie trouvée pour l'utilisateur $login"
+                val token = sessionManager.getToken()
+                if (token == null) {
+                    errorMessage = "Utilisateur non connecté"
+                    return@launch
+                }
+
+                val authHeader = "Bearer $token"
+                
+                // 1. Récupérer les infos de l'utilisateur courant (me)
+                val userResponse = RetrofitClient.apiServices.getUserMe(authHeader)
+                
+                if (userResponse.isSuccessful) {
+                    val login = userResponse.body()?.username
+                    if (login != null) {
+                        // 2. Récupérer l'historique avec le login obtenu
+                        val gamesResponse = RetrofitClient.apiServices.getPreviousGames(authHeader, login)
+                        
+                        if (gamesResponse.isSuccessful) {
+                            previousGames = gamesResponse.body() ?: emptyList()
+                            if (previousGames.isEmpty()) {
+                                errorMessage = "Aucune partie trouvée"
+                            }
+                        } else {
+                            errorMessage = "Erreur historique : ${gamesResponse.code()}"
+                        }
+                    } else {
+                        errorMessage = "Impossible de récupérer le login"
                     }
                 } else {
-                    errorMessage = "Utilisateur non connecté"
-                    games = emptyList()
+                    errorMessage = "Erreur session : ${userResponse.code()}"
                 }
             } catch (e: Exception) {
                 errorMessage = "Erreur : ${e.message}"

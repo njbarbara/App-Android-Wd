@@ -6,10 +6,10 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.sae.loupgarou.models.Game
+import com.sae.loupgarou.models.PreviousGame
 
 @Composable
-fun RecentGames(games: List<Game>) {
+fun RecentGames(games: List<PreviousGame>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(1),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -17,9 +17,10 @@ fun RecentGames(games: List<Game>) {
     ) {
         items(games) { game ->
             GameTemplate(
-                heureDeCreation = game.heureDeCreation,
+                gameDate = game.gameDate,
                 gameResult = game.result,
-                nightCounts = game.nightCounts
+                rolePlayed = game.rolePlayed,
+                nightsCount = game.nightsCount
             )
         }
     }
