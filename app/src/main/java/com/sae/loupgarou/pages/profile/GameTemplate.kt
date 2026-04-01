@@ -1,4 +1,4 @@
-package com.sae.loupgarou.ui.profile
+package com.sae.loupgarou.pages.profile
 
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid

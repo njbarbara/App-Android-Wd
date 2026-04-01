@@ -1,4 +1,4 @@
-package com.sae.loupgarou.ui.profile
+package com.sae.loupgarou.pages.profile
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement

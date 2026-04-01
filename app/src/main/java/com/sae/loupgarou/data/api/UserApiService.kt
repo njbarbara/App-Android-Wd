@@ -1,19 +1,17 @@
 package com.sae.loupgarou.data.api
 
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Header
 import com.sae.loupgarou.models.User
+import com.sae.loupgarou.models.PreviousGame
 
 interface UserApiService {
 
-        //et on fait passer le token dans le body
-        @GET("users/me")
-        suspend fun getUsers(): User
+    @GET("users/me")
+    suspend fun getUserMe(@Header("Authorization") token: String): User
 
-
-
-        /* //Template d'appel Post pour plus tard
-        @POST("posts")
-        suspend fun createPost(@Body post: Post): Post
-         */
+    @GET("previousGames/{login}")
+    suspend fun getPreviousGames(@Path("login") login: String): List<PreviousGame>
 
 }

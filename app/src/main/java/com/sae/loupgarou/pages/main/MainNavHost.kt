@@ -3,11 +3,14 @@ package com.sae.loupgarou.pages.main
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sae.loupgarou.data.SessionManager
 import com.sae.loupgarou.data.api.RetrofitClient
 import com.sae.loupgarou.pages.GameSelection.GameSelectionPage
 import com.sae.loupgarou.pages.connection.ConnectionPage
@@ -18,8 +21,10 @@ import com.sae.loupgarou.pages.home.HomePage
 import com.sae.loupgarou.pages.inscription.InscriptionPage
 import com.sae.loupgarou.pages.lobbies.LobbiesScreen
 import com.sae.loupgarou.pages.rules.RulePage
+import com.sae.loupgarou.pages.profile.ProfileScreen
 import com.sae.loupgarou.ui.theme.SettingsPage
 import com.sae.loupgarou.viewmodel.LobbiesViewModel
+import com.sae.loupgarou.viewmodel.ProfileViewModel
 import kotlinx.serialization.Serializable
 import kotlin.getValue
 
@@ -144,6 +149,26 @@ fun MainNavHost(viewModel: LobbiesViewModel) {
                 onRulesClick = { navController.navigate(Routes.RulesRoute) },
                 onCreditsClick = { navController.navigate(Routes.CreditsRoute) }
             )
+        }
+
+        composable<Routes.ProfileRoute>{
+            val context = LocalContext.current
+            val profileViewModel: ProfileViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    @Suppress("UNCHECKED_CAST")
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        return ProfileViewModel(
+                            RetrofitClient.userApiService,
+                            SessionManager(context)
+                        ) as T
+                    }
+                }
+            )
+            ProfileScreen(
+                onReturn = { navController.navigate(Routes.HomeRoute) },
+                viewModel = profileViewModel
+            )
+
         }
     }
 }
