@@ -30,8 +30,9 @@ data class PlayerInfo(
 @Serializable
 data class Lobby(
     val id: Int,
+    val host: String,
     val heureDeCreation: String,
-    val phase: String,
+    val phase: String?,
     val nbPlayerMax: Int,
     val isEnded: Boolean,
     val players: List<PlayerInfo>, // On récupère la liste...

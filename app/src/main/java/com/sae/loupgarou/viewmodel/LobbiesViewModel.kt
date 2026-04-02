@@ -31,6 +31,7 @@ class LobbiesViewModel(
             description = "Partie chill pour apprendre les règles.",
             phase = "lobby", // En attente
             nbPlayerMax = 8,
+            host = "najib",
             isEnded = false
         ),
         Lobby(
@@ -45,6 +46,7 @@ class LobbiesViewModel(
             description = "Micro obligatoire, pas de pitié.",
             phase = "playing", // En cours
             nbPlayerMax = 10,
+            host = "najib",
             isEnded = false
         ),
         Lobby(
@@ -58,6 +60,7 @@ class LobbiesViewModel(
             description = "GG aux loups qui ont tout rasé.",
             phase = "ended", // Terminée
             nbPlayerMax = 12,
+            host = "najib",
             isEnded = true
         )
     )

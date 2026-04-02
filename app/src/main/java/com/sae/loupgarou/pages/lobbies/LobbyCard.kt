@@ -62,7 +62,7 @@ fun LobbyCard(lobby: Lobby, onClick: () -> Unit) {
                     fontSize = 12.sp
                 )
                 Text(
-                    text = lobby.phase.uppercase(),
+                    text = (lobby.host ?: "Inconnu").uppercase(),
                     color = statusColor,
                     fontSize = 10.sp,
                     fontFamily = fontAldrich,
